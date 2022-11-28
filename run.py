@@ -27,7 +27,7 @@ if start in begin:
     time.sleep(1)
     dprint('.')
     time.sleep(1)
-    dprint('You awake from stasis, a flash of blinding light, your memory is fogged and cloudy. "Welcome back Captain, I have some troubling news, we have docked with an unknown outpost, it seems the outpost had a tractor beam which overpowered my engines. I am currently helpless to move the ship, and the outpost is not responding to our communications."')
+    dprint('You awake from stasis, a flash of blinding light, your memory is fogged and cloudy. "Welcome back Captain" the famaliar voice of the ships AI echoes " I have some troubling news, we have docked with an unknown outpost, it seems the outpost had a tractor beam which overpowered my engines. I am currently helpless to move the ship, and the outpost is not responding to our communications."')
 else:
     dprint('well I guess you better get on with your incredible existence then, Human..')
     quit()
