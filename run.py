@@ -28,43 +28,58 @@ one =["1","one","door one"]
 two =["2","two","door two"]
 three =["3","three","door three","door 3"]
 
-
-r5 =room(5,"""room5 """,[[0,0],[0,0],[0,0],[0,0],[1,1],[1,2],[1,3]],"")
-r4 =room(4,"""room4 """,[[0,0],[0,0],[0,0],[0,0],[1,1],[1,2],[1,3]] ,"")
-r3 =room(3,"room3",[[0,0],[0,0],[0,0],[0,0],[1,1],[1,2],[1,3]],"pickup")
-r2 =room(2,"room2",[[0,0],[0,0],[0,0],[0,0],[1,1],[1,2],[1,3]],"pickup")
-r1 =room(1,"""room1 """,[[0,0],[0,0],[0,0],[0,0],[1,1],[1,2],[1,3]] ,"")
-r0 =room(0,"room0", [[0,0],[0,0],[0,0],[0,0],[1,1],[1,2],[1,3]],"")
-rooms =[r1,r2,r3,r4,r5]
+r14=room(14,"""room14 """,[0,0,0,0,0,0,0],"")
+r13=room(13,"""room13 """,[7,12,0,0,0,6,14],"")
+r12=room(12,"""room12 """,[11,0,13,0,9,10,0],"")
+r11=room(11,"""room11 """,[0,12,0,8,0,0,0],"")
+r10=room(10,"""room10 """,[0,0,0,0,5,12,0],"")
+r9=room(9,"""room9 """,[8,0,0,0,5,12,0],"")
+r8=room(8,"""room8 """,[11,3,2,9,0,0,0],"")
+r7=room(7,"""room7 """,[0,0,13,4,0,0,0],"")
+r6 =room(6,"""room6 """,[0,0,0,0,4,13,2],"")
+r5 =room(5,"""room5 """,[3,10,9,0,0,0,0],"")
+r4 =room(4,"""room4 """,[7,1,6,0,0,0,0] ,"")
+r3 =room(3,"room3",[1,0,8,5,0,0,0],"pickup")
+r2 =room(2,"room2",[4,3,0,1,0,0,0],"pickup")
+r1 =room(1,"The Crystal Palace looms high above you as you step out onto its vast landing bay. The lights glow softly inside the enormous structure, casting long shadows across the crystalline walls. You can see nothing else around you or anywhere near the ship. There are three doors here, each marked with some alien hieroglyphics you have never seen before. Which door would you like to choose 1,2 or 3?\n ",[0,0,0,0,4,2,3] ,"")
+r0 =room(0,"You exit your stasis pod and look out the ships window to see a huge crystalline palace before you. There is no sign of any movement, and the place seems eerily quiet. If you would like to leave the ship and investigate the outpost press 1, if you would like to search the ship for any valuable supplies press 2\n ",
+ [0,0,0,0,1,1,0],"")
+rooms =[r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13,r14]
 
 location = 0
 
 def logic():
             global location
             goal = input()
-            if goal in left and rooms[location].options[0][0] == 1:
-                location = rooms[location].options[0][1]
+            if goal in left and rooms[location].options[0] != 0:
+                location = rooms[location].options[0]
                 loop()
-            elif  goal in right and rooms[location].options[1][0] == 1:
-                location = rooms[location].options[1][1]
+            elif  goal in right and rooms[location].options[1] != 0:
+                location = rooms[location].options[1]
                 loop()
-            elif  goal in straight and rooms[location].options[2][0] == 1:
-                location = rooms[location].options[2][1]
+            elif  goal in straight and rooms[location].options[2] != 0:
+                location = rooms[location].options[2]
                 loop()
-            elif  goal in back and rooms[location].options[3][0] == 1:
-                location = rooms[location].options[3][1]
+            elif  goal in back and rooms[location].options[3] != 0:
+                location = rooms[location].options[3]
                 loop()
-            elif  goal in one and rooms[location].options[4][0] == 1:
-                location = rooms[location].options[4][1]
+            elif  goal in one and rooms[location].options[4] != 0:
+                
+                location = rooms[location].options[4]
                 loop()
-            elif  goal in two and rooms[location].options[5][0] == 1:
-                location = rooms[location].options[5][1]
-                loop()
-            elif  goal in three and rooms[location].options[6][0] == 1:
-                location = rooms[location].options[6][1]
+               
+            elif  goal in two and rooms[location].options[5] != 0:
+                if location !=0:
+                    location = rooms[location].options[5]
+                    loop()
+                else:
+                     dprint("after much searching you find a small lazer device with enough charge for 2 uses, it may come in handy. You decide to leave the ship and investigate the outpost\n")
+                     location=1
+            elif  goal in three and rooms[location].options[6] != 0:
+                location = rooms[location].options[6]
                 loop()
             else:
-                dprint("please choose a valid direction ")
+                dprint("please choose a valid option ")
                 logic() 
 def loop():
         
