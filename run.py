@@ -28,6 +28,7 @@ one =["1","one","door one" "z","first","1st" ]
 two =["2","two","door two", "second","2nd"]
 three =["3","three","door three","door 3","third", "3rd"]
 pickup =["take","pickup","grab"]
+ship =["return","ship","enter"]
 
 r14=room(14,"""room14 """,[0,0,0,0,0,0,0],"")
 r13=room(13,"""room13 """,[7,12,0,0,0,6,14],"")
@@ -45,16 +46,16 @@ The machine has been broken into pieces. A few gears and wheels remain intact, a
 r4 =room(4,"""You follow the hall to the left and enter a large room filled with ancient, battered machinery. The walls and ceiling are covered in flickering blue energy crystals that pulse with strange patterns. A narrow catwalk runs along the top of this chamber. A long corridor continues WEST, to the NORTH is a small passage through some airvents and to the EAST is the landing pad, which direction would you like to take?\n  """,[7,1,6,0,0,0,0] ,"")
 r3 =room(3,"You have entered a large room where a pair of doors face each other across a wide chasm. To the EAST lies the landing bay and your ship. Beyond the doors is darkness.The two doors are identical. Each is made of a solid block of metal, about three feet thick. The stone is carved with a strange language that you cannot read. One door has an iron ring set into its surface, while the other door appears to be hollow.",[1,0,8,5,0,0,0],"pickup")
 r2 =room(2,"It's too dark to see anything clearly, so you activate your flashlight. The room seems mostly empty until you notice something moving in the shadows. Something is crouched on one of the shelves lining the back wall; it looks like a huge spider made of metal. It scuttles forward suddenly and lunges at you! You fire your lazer wildly, missing the creature completely and blasting a chunk out of the wall before you.The spider scurries off to the EAST, with a noise that leaves your heart pounding. There are exits to the WEST and EAST and a door to the SOUTH which looks like it returns you to the landing bay. Which way would you like to go?\n",[4,3,0,1,0,0,0],"pickup")
-r1 =room(1,"The Crystal Palace looms high above you as you step out onto its vast landing bay. The lights glow softly inside the enormous structure, casting long shadows across the crystalline walls. You can see a small flashing object on the ground, apart from that there does'nt seem to be anything else around you or anywhere near the ship. There are three doors here, each marked with some alien hieroglyphics you have never seen before. Which door would you like to choose 1, 2 or 3?\n ",[0,0,0,0,4,2,3] ,"")
-r0 =room(0,"You exit your stasis pod and look out the ships window to see a huge crystalline palace before you. There is no sign of any movement, and the place seems eerily quiet. If you would like to leave the ship and investigate the outpost press 1, if you would like to search the ship for any valuable supplies press 2\n ",
- [0,0,0,0,1,1,0],"")
+r1 =room(1,"The Crystal Palace looms high above you as you step out onto its vast landing bay. The lights glow softly inside the enormous structure, casting long shadows across the crystalline walls. You can see a small flashing object on the ground, apart from that there does'nt seem to be anything else around you or anywhere near the ship. There are three doors here, each marked with some alien hieroglyphics you have never seen before.You may return to the SHIP or would you like to choose 1, 2 or 3?\n ",[0,0,0,0,4,2,3] ,"you take the object which looks much like a key of some sort.You may return to the SHIP or would you like to choose 1, 2 or 3?\n")
+r0 =room(0,"You exit your stasis pod and look out the ships window to see a huge crystalline palace before you. There is no sign of any movement, and the place seems eerily quiet. If you would like to leave the ship and investigate the outpost press 1, if you would like to search the ship for any valuable supplies press 2. If you would like to speak to the AI press 3\n ",
+ [0,0,0,0,1,1,1],"")
 rooms =[r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13,r14]
 
 location = 0
 
 def logic():
             global location
-            goal = input()
+            goal = input().strip().lower()
             if goal in left and rooms[location].options[0] != 0:
                 location = rooms[location].options[0]
                 loop()
@@ -82,15 +83,18 @@ def logic():
                 if location !=0:
                     location = rooms[location].options[5]
                     loop()
-                else:
-                     
+                else:                     
                      dprint("after much searching you find a small lazer device with enough charge for 2 uses, it may come in handy. You decide to leave the ship and investigate the outpost\n")
                      location=1
             elif  goal in three and rooms[location].options[6] != 0:
                 location = rooms[location].options[6]
                 loop()
-            elif goal in pickup and rooms[location].pickup != "":
-                 dprint(rooms[location].pickup)
+            elif goal in pickup and rooms[location].extra != "":
+                 dprint(rooms[location].extra)
+                 logic()
+            elif goal in ship and location == 0:
+                 location = 0
+                 dprint(rooms[0].desc)
                  loop()
             else:
                 dprint("please choose a valid option ")
@@ -98,7 +102,6 @@ def logic():
 def loop():
         
         dprint(rooms[location].desc)
-        dprint(rooms[location].extra)
         logic()
         loop()
         
