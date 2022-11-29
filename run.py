@@ -30,7 +30,7 @@ back = ["back","b","SOUTH","s","down"]
 one =["1","one","door one" "z","first","1st" ]
 two =["2","two","door two", "second","2nd"]
 three =["3","three","door three","door 3","third", "3rd"]
-pickup =["take","pickup","grab","use"]
+pickup =["take","pickup","grab","use","p","examine"]
 ship =["return","ship","enter"]
 go = ["go","walk","run"]
 
@@ -60,7 +60,7 @@ location = 0
 def logic():
             global location
             goal = input().strip().lower()
-           
+            global key,lazer,book
             if goal in go:
                  dprint("please don't use that word, just pick an option OK\n")
                  logic()
@@ -85,7 +85,7 @@ def logic():
                     dprint("the door is locked, there must be another way around")
                     logic()
                 else:
-                     dprint("as you approach the door the object in your pocket begins to pulse and vibrate. Suddenly there is a loud piercing sound and the door slides open revealing a huge central control station. You enter cautiously...")
+                     dprint("as you approach the door the object in your pocket begins to pulse and vibrate. Suddenly there is a loud piercing sound and the door slides open revealing a huge central control station. You enter cau1tiously...")
                      
                 location = rooms[location].options[3]
                 loop()
@@ -105,8 +105,13 @@ def logic():
                 location = rooms[location].options[6]
                 loop()
             elif goal in pickup and rooms[location].extra != "":
-                 dprint(rooms[location].extra)
-                 logic()
+                 if location==1 and inv[0]==False:
+                      dprint(rooms[location].extra)
+                      inv[0]=True
+                      logic()
+                 else:
+                    dprint("you already took the object")
+                    logic()
             elif goal in ship and location == 0:
                  location = 0
                  dprint(rooms[0].desc)
