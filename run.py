@@ -57,8 +57,8 @@ location = 0
 def logic():
             global location
             goal = input().strip().lower()
-            if go in goal:
-                 dprint("please don't use that word, just pick a direction OK")
+            if goal in go:
+                 dprint("please don't use that word, just pick a direction OK\n")
             if goal in left and rooms[location].options[0] != 0:
                 location = rooms[location].options[0]
                 loop()
