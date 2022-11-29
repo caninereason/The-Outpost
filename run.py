@@ -4,6 +4,7 @@ import sys
 delay = 0
 tdelay = 0
 
+        
 condition =True
 def dprint(s):
     for c in s:
@@ -17,8 +18,10 @@ class room:
         self.desc =desc
         self.options=options
         self.extra=extra
-       
-
+key =False
+lazer = False
+book=False
+inv = [key,lazer,book]
 begin = ["play","p","y","yes","start","s"]
 left = ["left","l","w","west"]
 right = ["right","r","east","e"]
@@ -27,12 +30,12 @@ back = ["back","b","SOUTH","s","down"]
 one =["1","one","door one" "z","first","1st" ]
 two =["2","two","door two", "second","2nd"]
 three =["3","three","door three","door 3","third", "3rd"]
-pickup =["take","pickup","grab"]
+pickup =["take","pickup","grab","use"]
 ship =["return","ship","enter"]
 go = ["go","walk","run"]
 
 r14=room(14,"""room14 """,[0,0,0,0,0,0,0],"")
-r13=room(13,"""room13 """,[7,12,0,0,0,6,14],"")
+r13=room(13,"""This room seems to be the central control room of this facility. In the middle of the room is a large console, surrounded by switches, dials and knobs. There is a door to the EAST and another to the WEST.you can see two doors on a lower platform , you may enter door 1 or door 2 """,[7,12,0,0,6,14,0],"")
 r12=room(12,"""You find yourself in a long corridor with 2 doors leading off to the EAST and a hatch leading SOUTH. The corridor ends in an open doorway leading NORTH. Would you like to take the FIRST or SECOND door to the east, or head NORTH or SOUTH\n""",[11,0,13,0,9,10,0],"You examine the contents of the crate. Inside you find a small stack of papers. They are written in what appears to be an ancient script, which you do not recognize.\n")
 r11=room(11,"""A room containing rows of shelves packed with crates, barrels, boxes and other containers. It smells damp and musty here.
 On one shelf stands a metal box, seemingly empty. There is a small hatch in the bottom of the box. You open the box and find that it contains a large collection of vials, each labeled with a different chemical compound.To the EAST looks like a long corridor, and a circular room is visable to the SOUTH\n """,[0,12,0,8,0,0,0],"")
@@ -41,9 +44,9 @@ r9=room(9,"""Here you discover a room containing rows of shelves crammed with cr
 r8=room(8,"""A large dome shaped room, full of floating globes of glowing jelly. They wave gently in the air currents, occasionally bumping into each other. Some of them glow brightly, making the entire room throb with an eerie green light. Your flashlight barely penetrates the gloom, illuminating only the nearest jelly globe. This one pulses with a soft red light. The others seem to be inactive.
 There are several more jelly globes beyond this one. Most of them appear to be inert, but one glows dimly with a yellowish light. It appears to notice your presence and slowly moves toward you. Another jelly globe pokes out of the far corner of the room, and moves quickly to get out of sight. The whole chamber is filled with a low hissing noise. There are 4 exits here NORTH, SOUTH, WEST and to the EAST\n""",[2,9,11,3,0,0,0],"")
 r7=room(7,"""You open the door and find yourself facing a narrow corridor. Its walls are decorated with strange carvings, each one depicting some kind of bizarre monster. There is a door to the NORTH and another to the SOUTH.\n """,[0,0,13,4,0,0,0],"")
-r6 =room(6,"""You decide to explore the airvents which lead you to a large circular room lit by powerful energy crystals hanging from the wall. Some kind of equipment is bolted to the floor here, but most of it lies broken and twisted. There is a narrow passage leading NORTH through the center of the room. To the EAST you can see broken machinary littered around and to the WEST is a dark room with a small flashing light\n""",[0,2,13,0,4,0,0],"")
+r6 =room(6,"""You decide to explore the airvents which lead you to a large circular room lit by powerful energy crystals hanging from the wall. Some kind of equipment is bolted to the floor here, but most of it lies broken and twisted. There is a narrow passage leading NORTH through the center of the room. To the WEST you can see broken machinary littered around and to the EAST is a dark room with a small flashing light\n""",[4,2,13,0,0,0,0],"")
 r5 =room(5,"""The room seems empty except for an oddly shaped piece of machinery resting on the floor. The machine is made of a dull gray metal and looks vaguely humanoid. It resembles a mechanical man standing upright, with four long legs, a torso, and a cylindrical head.
-The machine has been broken into pieces. A few gears and wheels remain intact, along with a couple of wires that run down its spine. All the other parts lie scattered across the floor.There is a ladder to the WEST, and exits to the NORTH and EAST \n """ ,[3,10,9,0,0,0,0],"")
+The machine has been broken into pieces. A few gears and wheels remain intact, along with a couple of wires that run down its spine. All the other parts lie scattered across the floor.There is a ladder to the EAST, and exits to the NORTH and WEST \n """ ,[10,3,9,0,0,0,0],"")
 r4 =room(4,"""You follow the hall to the left and enter a large room filled with ancient, battered machinery. The walls and ceiling are covered in flickering blue energy crystals that pulse with strange patterns. A narrow catwalk runs along the top of this chamber. A long corridor continues WEST, to the NORTH is a small passage through some airvents and to the EAST is the landing pad, which direction would you like to take?\n  """,[7,1,6,0,0,0,0] ,"")
 r3 =room(3,"You have entered a large room where a pair of doors face each other across a wide chasm. To the WEST lies the landing bay and your ship. Beyond the doors is darkness.The two doors are identical. Each is made of a solid block of metal, about three feet thick. The stone is carved with a strange language that you cannot read. One door to the NORTH has an iron ring set into its surface, while the other EAST door appears to be hollow.\n",[1,5,8,0,0,0,0],"pickup")
 r2 =room(2,"It's too dark to see anything clearly, so you activate your flashlight. The room seems mostly empty until you notice something moving in the shadows. Something is crouched on one of the shelves lining the back wall; it looks like a huge spider made of metal. It scuttles forward suddenly and lunges at you! You fire your lazer wildly, missing the creature completely and blasting a chunk out of the wall before you.The spider scurries off to the EAST, with a noise that leaves your heart pounding. There are exits to the WEST and EAST and a door to the SOUTH which looks like it returns you to the landing bay. Which way would you like to go?\n",[4,3,0,1,0,0,0],"pickup")
@@ -57,21 +60,24 @@ location = 0
 def logic():
             global location
             goal = input().strip().lower()
+           
             if goal in go:
-                 dprint("please don't use that word, just pick a direction OK\n")
+                 dprint("please don't use that word, just pick an option OK\n")
+                 logic()
             if goal in left and rooms[location].options[0] != 0:
                 location = rooms[location].options[0]
                 loop()
             elif  goal in right and rooms[location].options[1] != 0:
-                location = rooms[location].options[1]
-                loop()
-            elif  goal in straight and rooms[location].options[2] != 0:
                 if location ==5 :
                      location =10
                      dprint("You climb the ladder and enter a small room with an old wooden desk. On top of the desk sits a book that looks like it might contain useful information.The ladder leads DOWN to where you came from, and NORTH there lies a long corridor with many doors")
                      location = rooms[location].options[2]
                      logic()
                 else:
+                    location = rooms[location].options[1]
+                    loop()
+            elif  goal in straight and rooms[location].options[2] != 0:
+                
                     location = rooms[location].options[2]
                     loop()
             elif  goal in back and rooms[location].options[3] != 0:
