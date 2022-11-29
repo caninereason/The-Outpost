@@ -71,19 +71,18 @@ def logic():
                 if location ==5 :
                      location =10
                      dprint("You climb the ladder and enter a small room with an old wooden desk. On top of the desk sits a book that looks like it might contain useful information.The ladder leads DOWN to where you came from, and NORTH there lies a long corridor with many doors")
-                     location = rooms[location].options[2]
                      logic()
                 else:
                     location = rooms[location].options[1]
                     loop()
             elif  goal in straight and rooms[location].options[2] != 0:
-                if location==12 and  inv[1] != 1:
+                if location==12 and inv[1] != True:
                     dprint("the door is locked, there must be another way around")
-                    logic()
-                elif location==12 and  inv[1] == 1:
+                    loop()
+                elif location==12 and inv[1] == True:
                      dprint("as you approach the door the object in your pocket begins to pulse and vibrate. Suddenly there is a loud piercing sound and the door slides open revealing a huge central control station. You enter cau1tiously...")
                      location = rooms[location].options[2]
-                    loop()
+                     loop()
                 else:
                     location = rooms[location].options[2]
                     loop()
