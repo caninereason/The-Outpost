@@ -39,7 +39,7 @@ r13=room(13,"""This room seems to be the central control room of this facility. 
 r12=room(12,"""You find yourself in a long corridor with 2 doors leading off to the EAST and a hatch leading SOUTH. The corridor ends in an open doorway leading NORTH. Would you like to take the FIRST or SECOND door to the east, or head NORTH or SOUTH\n""",[11,0,13,0,9,10,0],"You examine the contents of the crate. Inside you find a small stack of papers. They are written in what appears to be an ancient script, which you do not recognize.\n")
 r11=room(11,"""A room containing rows of shelves packed with crates, barrels, boxes and other containers. It smells damp and musty here.
 On one shelf stands a metal box, seemingly empty. There is a small hatch in the bottom of the box. You open the box and find that it contains a large collection of vials, each labeled with a different chemical compound.To the EAST looks like a long corridor, and a circular room is visable to the SOUTH\n """,[0,12,0,8,0,0,0],"")
-r10=room(10,""" you enter a small room with an old wooden desk. On top of the desk sits a book that looks like it might contain useful information. There is a ladder to the EAST and an exit heading NORTH\n """,[5,0,12,0,0,0,0],"")
+r10=room(10,""" you enter a small room with an old wooden desk. On top of the desk sits a book that looks like it might contain useful information. There is a ladder to the WEST and an exit heading NORTH\n """,[5,0,12,0,0,0,0],"")
 r9=room(9,"""Here you discover a room containing rows of shelves crammed with crates, barrels, boxes and other containers. It smells damp and musty here. In the middle of the room is a large metal cylinder with a door set into its side labeled Z. There appears to be a long corridor to the EAST.There is also a passage leading WEST to the upper level.\n """,[8,12,0,0,5,0,0],"")
 r8=room(8,"""A large dome shaped room, full of floating globes of glowing jelly. They wave gently in the air currents, occasionally bumping into each other. Some of them glow brightly, making the entire room throb with an eerie green light. Your flashlight barely penetrates the gloom, illuminating only the nearest jelly globe. This one pulses with a soft red light. The others seem to be inactive.
 There are several more jelly globes beyond this one. Most of them appear to be inert, but one glows dimly with a yellowish light. It appears to notice your presence and slowly moves toward you. Another jelly globe pokes out of the far corner of the room, and moves quickly to get out of sight. The whole chamber is filled with a low hissing noise. There are 4 exits here NORTH, SOUTH, WEST and to the EAST\n""",[2,9,11,3,0,0,0],"")
@@ -77,16 +77,14 @@ def logic():
                     location = rooms[location].options[1]
                     loop()
             elif  goal in straight and rooms[location].options[2] != 0:
-                
-                    location = rooms[location].options[2]
-                    loop()
-            elif  goal in back and rooms[location].options[3] != 0:
                 if location==12 and  inv[1] != 1:
                     dprint("the door is locked, there must be another way around")
                     logic()
                 else:
                      dprint("as you approach the door the object in your pocket begins to pulse and vibrate. Suddenly there is a loud piercing sound and the door slides open revealing a huge central control station. You enter cau1tiously...")
-                     
+                location = rooms[location].options[2]
+                loop()
+            elif  goal in back and rooms[location].options[3] != 0:
                 location = rooms[location].options[3]
                 loop()
             elif  goal in one and rooms[location].options[4] != 0:
