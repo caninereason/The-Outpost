@@ -81,6 +81,12 @@ def logic():
                     location = rooms[location].options[2]
                     loop()
             elif  goal in back and rooms[location].options[3] != 0:
+                if location==12 and  inv[1] != 1:
+                    dprint("the door is locked, there must be another way around")
+                    logic()
+                else:
+                     dprint("as you approach the door the object in your pocket begins to pulse and vibrate. Suddenly there is a loud piercing sound and the door slides open revealing a huge central control station. You enter cautiously...")
+                     
                 location = rooms[location].options[3]
                 loop()
             elif  goal in one and rooms[location].options[4] != 0:
