@@ -110,14 +110,14 @@ def logic():
                       inv[0]=True
                       logic()
                  else:
-                    dprint("you already took the object")
+                    dprint("you already took the object\n")
                     logic()
-            elif goal in ship and location == 0:
+            elif goal in ship and location == 1:
                  location = 0
                  dprint(rooms[0].desc)
-                 loop()
+                 logic()
             else:
-                dprint("please choose a valid option ")
+                dprint("please choose a valid option\n ")
                 logic() 
 def loop():
         print(location)
