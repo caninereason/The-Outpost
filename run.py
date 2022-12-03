@@ -76,10 +76,10 @@ def logic():
                     location = rooms[location].options[1]
                     loop()
             elif  goal in straight and rooms[location].options[2] != 0:
-                if location==12 and inv[1] != True:
+                if location==12 and inv[0] != True:
                     dprint("the door is locked, there must be another way around")
                     loop()
-                elif location==12 and inv[1] == True:
+                elif location==12 and inv[0] == True:
                      dprint("as you approach the door the object in your pocket begins to pulse and vibrate. Suddenly there is a loud piercing sound and the door slides open revealing a huge central control station. You enter cau1tiously...")
                      location = rooms[location].options[2]
                      loop()
@@ -100,7 +100,7 @@ def logic():
                     loop()
                 else:                     
                      dprint("after much searching you find a small lazer device with enough charge for 2 uses, it may come in handy. You decide to leave the ship and investigate the outpost\n")
-                     location=1
+                     
             elif  goal in three and rooms[location].options[6] != 0:
                 location = rooms[location].options[6]
                 loop()

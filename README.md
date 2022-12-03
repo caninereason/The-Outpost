@@ -1,31 +1,20 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Site Overview
+The outpost is a simple text adventure game made in python. The player must navigate their way around and abandoned outpost and find a way to escape.
 
-Welcome USER_NAME,
+## Goal
+I was fascinated by the "choose your own adventure" books as a child, and wished to create a science fiction themed version. I had been thinking of this theme for a long time and this project seemed like the ideal place to bring this story to life.
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+## Technologies used
+-[Heroku](https://heroku.com) to deploy the website.
+-[Python](https://www.python.org/) for the main game-play.
+-[GitHub](https://github.com/) as a remote repository.
+-[Visual Studio Code](https://code.visualstudio.com/) as a local IDE & repository.
 
-## Reminders
+## Target Audience
+-lovers of science fiction
+-people who enjoy text adventure games and interactive novels
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
-
-## Creating the Heroku app
-
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
-
-1. `heroku/python`
-2. `heroku/nodejs`
-
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
-
-Connect your GitHub repository and deploy as normal.
-
-## Constraints
-
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
------
-Happy coding!
+# Implementation
+- I opted for a game loop which would print each scenario, the rooms would be organised into a collection of arrays, containing the room number, room text, optional text for keys etc. and an array of exits. This array would contain a zero if that direction was unavailable, or if this exit was available, it would contain the connecting rooms number. This allowed me to orgainize and edit the rooms and connections in an intuitive way
+# Bugs
+- There was a bug found with the lock on level 12, it seemed I had confused some of the logic with room 5, so it was a simple fix to rearrange the logic
