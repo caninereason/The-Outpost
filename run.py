@@ -126,8 +126,8 @@ way would you like to go?\n"""
 r1 =room(1,"""The Crystal Palace looms high above you as you step out onto its vast
 landing bay. The lights glow softly inside the enormous structure, casting long
 shadows across the crystalline walls. You can see a small flashing object on
-the ground,This place has a cold ominous prescence and you fear if you do not find
-a way out soon, you will be stuck here forever. 
+the ground in front of you.This place has a cold ominous prescence and you fear if you
+do not find a way out soon, you will be stuck here forever. 
 There are three doors here, each marked with some alien hieroglyphics you have never 
 seen before.You may return to the SHIP or would you like to choose 1, 2 or 3?\n """,[0,0,0,0,4,2,3] ,"""you take the object
 which looks much like a key of some sort.You may return to the SHIP or would
@@ -206,8 +206,7 @@ and you run for the nearest exit, barely escaping being vaporised\n""")
                     location = rooms[location].options[5]
                     loop()
                 else:                     
-                     dprint("""after much searching you find a small lazer device with enough charge for 2
-uses, it may come in handy.\n""")
+                     dprint("""after much searching you find a small lazer device with enough charge for 1 use, it may prove to be useful.\n""")
                      lazer=True
                      rooms[0].desc="""  There is no sign of any movement, and the place seems eerily quiet.If you
 would like to leave the ship and investigate the outpost press 1, if you would
