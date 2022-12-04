@@ -1,7 +1,7 @@
 import sys
 import time
 
-delay = .03
+delay = .02
 tdelay = .5
         
 condition =True
@@ -66,17 +66,7 @@ def logic():
             global tries
             goal = input().strip().lower()
             global key,lazer,book
-            if location ==14 and goal == "nothing" :
-                 dprint("'That is the correct answer, I wish you luck on your journey captain' You suddenly find yourself transported back to your ship, with all systems apparantly functioning.'glad to see you captain, I sense a large anti matter buildup in the outposts main engine room, I have full control of our vessel now and am initiating the undocking sequence, we must escape quickly' The ship rattles wildly as the main engines power up. You see the outpost move away from you rapidly, and in a matter of seconds there is a blinding light as the outpost explodes with a huge shockwave jolting the ship. 'I am glad for your safe return captain, I feared our journey might have ended there, please resume your position in your statis pod and I will continue our course home' You cimb into your statis pod and think of what may have become of you had you not kept your wits about you. The stasis pod closes and you smell the familiar odor of stasis gases. ' We shall find home soon captain, sleep well")
-                 time.sleep(tdelay)
-                 dprint('.')
-                 time.sleep(tdelay)
-                 dprint('.')
-                 time.sleep(tdelay)
-                 dprint("congratulations on completing the outpost, many adventurers have fallen here, and we commend you for your wit,skill and expertise, see you in the next adventure.")
-            else :
-                 dprint("'that is incorrect, I am sorry captain you are not worthy'The room starts to fill with a noxious gas, you try to find some way out but you soon lose consciousness.GAME OVER")
-                 quit()            
+                       
             if goal in go:
                  dprint("please don't use that word, just pick an option OK\n")
                  logic()
@@ -141,6 +131,17 @@ def logic():
                  if lazer ==False :
                     dprint(rooms[0].desc.strip('You exit your stasis pod and look out the ships window to see a huge crystalline palace before you.'))
                     logic()
+            elif location ==14 and goal == "nothing" :
+                 dprint("'That is the correct answer, I wish you luck on your journey captain' You suddenly find yourself transported back to your ship, with all systems apparantly functioning.'glad to see you captain, I sense a large anti matter buildup in the outposts main engine room, I have full control of our vessel now and am initiating the undocking sequence, we must escape quickly' The ship rattles wildly as the main engines power up. You see the outpost move away from you rapidly, and in a matter of seconds there is a blinding light as the outpost explodes with a huge shockwave jolting the ship. 'I am glad for your safe return captain, I feared our journey might have ended there, please resume your position in your statis pod and I will continue our course home' You cimb into your statis pod and think of what may have become of you had you not kept your wits about you. The stasis pod closes and you smell the familiar odor of stasis gases. ' We shall find home soon captain, sleep well")
+                 time.sleep(tdelay)
+                 dprint('.')
+                 time.sleep(tdelay)
+                 dprint('.')
+                 time.sleep(tdelay)
+                 dprint("congratulations on completing the outpost, many adventurers have fallen here, and we commend you for your wit,skill and expertise, see you in the next adventure.")
+            elif location ==14 and goal != "nothing":
+                 dprint("'that is incorrect, I am sorry captain you are not worthy'The room starts to fill with a noxious gas, you try to find some way out but you soon lose consciousness.GAME OVER")
+                 quit() 
             else:
                 dprint("please choose a valid option\n ")
                 logic() 
