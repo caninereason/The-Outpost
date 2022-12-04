@@ -49,10 +49,7 @@ r12=room(12,"""You find yourself in a long corridor with 2 doors leading off to 
 and a hatch leading SOUTH. The corridor ends in an open doorway leading NORTH.
 Would you like to take the FIRST or SECOND door to the east, or head NORTH or
 SOUTH\n"""
-,[11,0,13,0,9,10,0],"""You examine the contents of the crate. Inside you find a small stack of
-papers. They are written in what appears to be an ancient script, which you do
-not recognize.\n"""
-)
+,[0,0,13,11,9,10,0],"")
 r11=room(11,"""A room containing rows of shelves packed with crates, barrels, boxes and
 other containers. It smells damp and musty here. On one shelf stands a metal
 box, seemingly empty. There is a small hatch in the bottom of the box. You open
@@ -63,7 +60,7 @@ a circular room is visable to the SOUTH\n """
 r10=room(10,""" you enter a small room with an old wooden desk. On top of the desk sits a
 book that looks like it might contain useful information. There is a ladder to
 the WEST and an exit heading NORTH\n """
-,[0,0,12,5,0,0,0],"""You suddenly find yourself engulfed in light and find yourself transported
+,[5,0,12,0,0,0,0],"""You suddenly find yourself engulfed in light and find yourself transported
 to a new location in the station...""")
 r9=room(9,"""Here you discover a room containing rows of shelves crammed with crates,
 barrels, boxes and other containers. It smells damp and musty here. In the
@@ -100,8 +97,8 @@ humanoid. It resembles a mechanical man standing upright, with four long legs,
 a torso, and a cylindrical head. The machine has been broken into pieces. A few
 gears and wheels remain intact, along with a couple of wires that run down its
 spine. All the other parts lie scattered across the floor.There is a ladder to
-the EAST, and exits to the NORTH and WEST \n """
-,[10,3,9,0,0,0,0],"")
+the WEST, and exits to the NORTH and EAST \n """
+,[3,10,9,0,0,0,0],"")
 r4 =room(4,"""You follow the hall to the left and enter a large room filled with ancient,
 battered machinery. The walls and ceiling are covered in flickering blue energy
 crystals that pulse with strange patterns. A narrow catwalk runs along the top
@@ -125,7 +122,7 @@ chunk out of the wall before you.The spider scurries off to the EAST, with a
 noise that leaves your heart pounding. There are exits to the WEST and EAST and
 a door to the SOUTH which looks like it returns you to the landing bay. Which
 way would you like to go?\n"""
-,[4,3,0,1,0,0,0],"pickup")
+,[6,8,0,1,0,0,0],"pickup")
 r1 =room(1,"""The Crystal Palace looms high above you as you step out onto its vast
 landing bay. The lights glow softly inside the enormous structure, casting long
 shadows across the crystalline walls. You can see a small flashing object on
@@ -164,9 +161,7 @@ def logic():
             elif  goal in right and rooms[location].options[1] != 0:
                 if location ==5 :
                      location =10
-                     dprint("""You climb the ladder and enter a small room with an old wooden desk. On top
-of the desk sits a book that looks like it might contain useful information.The
-ladder leads DOWN to where you came from, and NORTH there lies a long corridor
+                     dprint("""You climb the ladder and enter a small room with an old wooden desk. On top of the desk sits a book that looks like it might contain useful information.The ladder leads DOWN to where you came from, and NORTH there lies a long corridor
 with many doors""")
                      logic()
                 else:
