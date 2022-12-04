@@ -83,7 +83,7 @@ SOUTH, WEST and to the EAST\n"""
 r7=room(7,"""You enter the opening and find yourself facing a narrow corridor. Its walls are
 decorated with strange carvings, each one depicting some kind of bizarre
 monster. There is a door to the NORTH and another to the EAST.\n """
-,[4,0,13,0,0,0,0],"")
+,[0,4,13,0,0,0,0],"")
 r6 =room(6,"""You decide to explore further which leads you to a large circular room
 lit by powerful energy crystals hanging from the wall. Some kind of equipment
 is bolted to the floor here, but most of it lies broken and twisted. There is a
@@ -122,14 +122,15 @@ chunk out of the wall before you.The spider scurries off to the EAST, with a
 noise that leaves your heart pounding. There are exits to the WEST and EAST and
 a door to the SOUTH which looks like it returns you to the landing bay. Which
 way would you like to go?\n"""
-,[6,8,0,1,0,0,0],"pickup")
+,[8,6,0,1,0,0,0],"pickup")
 r1 =room(1,"""The Crystal Palace looms high above you as you step out onto its vast
 landing bay. The lights glow softly inside the enormous structure, casting long
 shadows across the crystalline walls. You can see a small flashing object on
-the ground in front of you.This place has a cold ominous prescence and you fear if you
-do not find a way out soon, you will be stuck here forever. 
-There are three doors here, each marked with some alien hieroglyphics you have never 
-seen before.You may return to the SHIP or would you like to choose 1, 2 or 3?\n """,[0,0,0,0,4,2,3] ,"""you take the object
+the ground in front of you.This place has a cold ominous prescence and you fear if 
+you do not find a way out soon, you will be stuck here forever. 
+There are three doors here, each marked with some alien hieroglyphics you 
+have never seen before.
+You may return to the SHIP or would you like to choose 1, 2 or 3?\n """,[0,0,0,0,4,2,3] ,"""you take the object
 which looks much like a key of some sort.You may return to the SHIP or would
 you like to choose 1, 2 or 3?\n"""
 )
@@ -220,17 +221,18 @@ like to speak to the AI press 3\n """,
                 else:
                      dprint("""'captain I believe I have been infected with a complex virus, I only have
 nothing left to say, I only have nothing left to say'... The computer continues
-as you wonder how you can fix this mess\n""")
+as you wonder how you can fix this mess.\n""")
             elif goal in pickup and rooms[location].extra != "":
                  if location==1 and inv[0]==False:
                       dprint(rooms[location].extra)
                       inv[0]=True
                       rooms[1].desc ="""The Crystal Palace looms high above you as you step out onto its vast
 landing bay. The lights glow softly inside the enormous structure, casting long
-shadows across the crystalline walls.This place has a cold ominous prescence and you fear
- if you do not find a way out soon, you will be stuck here forever. 
-There are three doors here, each marked with some alien hieroglyphics you have never 
-seen before.You may return to the SHIP or would you like to choose 1, 2 or 3?\n """
+shadows across the crystalline walls.This place has a cold ominous prescence and
+you fear if you do not find a way out soon, you will be stuck here forever. 
+There are three doors here, each marked with some alien hieroglyphics you have
+never seen before.
+You may return to the SHIP or would you like to choose 1, 2 or 3?\n """
                       logic()
                  elif location==1 and inv[0]==True:
                     dprint("you already took the object\n")
