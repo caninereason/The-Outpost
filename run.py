@@ -57,7 +57,7 @@ r0 =room(0,"You exit your stasis pod and look out the ships window to see a huge
  [0,0,0,0,1,1,1],"")
 rooms =[r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13,r14]
 
-location = 14
+location = 0
 
 def logic():
             
@@ -154,11 +154,11 @@ def loop():
 dprint("Welcome\n")
 dprint("What is your name:  ")
 name = input()
-dprint(f'Greetings {name}!\n welcome to the outpost')
+dprint(f'Greetings {name}!\n Welcome to the outpost')
 dprint('.')
 time.sleep(1)
 dprint('.\n')
-dprint ('Do you wish to start the game please enter yes or no ? ')
+dprint ('Do you wish to start the game?  ')
 start = input()
 if start in begin:
 
@@ -173,6 +173,6 @@ if start in begin:
     """)
     condition=False
 else:
-    dprint('well I guess you better get on with your incredible existence then, Human..')
+    dprint('Well I guess you better get on with your incredible existence then, Human..')
     quit()
 loop()
