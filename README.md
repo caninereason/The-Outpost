@@ -30,3 +30,9 @@ This made it easy to organise and iterate through each rooms dialogue and  optio
 
 ### Version Control
 - I used git as the version control software. With the use of the commands git add . , git commit -m "", and git push , I was able to add, save and push code to the github repository.
+
+## TODO
+- comment code
+- rm deployment
+- readme extra?
+- line length/ word breaks

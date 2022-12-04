@@ -1,8 +1,8 @@
 import sys
 import time
 
-delay = 0
-tdelay = 0
+delay = .03
+tdelay = .5
         
 condition =True
 def dprint(s):
@@ -62,7 +62,6 @@ location = 14
 def logic():
             
             global location 
-            location = 14
             global rooms
             global tries
             goal = input().strip().lower()
@@ -153,17 +152,17 @@ def loop():
      
     
 dprint("Welcome\n")
-dprint("What is your name\n ")
+dprint("What is your name:  ")
 name = input()
-dprint(f'Greetings {name}! welcome to the outpost\n')
+dprint(f'Greetings {name}!\n welcome to the outpost')
 dprint('.')
 time.sleep(1)
-dprint('.')
-dprint ('Do you wish to start the game or not ? ')
+dprint('.\n')
+dprint ('Do you wish to start the game please enter yes or no ? ')
 start = input()
 if start in begin:
 
-    dprint('then let us begin')
+    dprint('Then let us begin')
     dprint('.')
     time.sleep(tdelay)
     dprint('.')
