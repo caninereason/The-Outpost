@@ -39,7 +39,7 @@ go = ["go","walk","run"]
 r14=room(14,"""You enter the room and the door shuts tight behind you 'Hello captain , I
 have been watching you for quite some time. If you can answer this riddle I
 will allow you to leave 'What is greater than God, More evil than the devil,
-The poor have it, The rich don't need it, And if you eat it, you'll die?'""",[0,0,0,0,0,0,0],"")
+The poor have it, The rich don't need it, And if you eat it, you'll die?'\n""",[0,0,0,0,0,0,0],"")
 r13=room(13,"""This room seems to be the central control room of this facility. In the
 middle of the room is a large console, surrounded by switches, dials and knobs.
 There is a door to the EAST and another to the WEST.you can see two doors on a
@@ -61,7 +61,7 @@ r10=room(10,""" you enter a small room with an old wooden desk. On top of the de
 book that looks like it might contain useful information. There is a ladder to
 the WEST and an exit heading NORTH\n """
 ,[5,0,12,0,0,0,0],"""You suddenly find yourself engulfed in light and find yourself transported
-to a new location in the station...""")
+to a new location in the station...\n""")
 r9=room(9,"""Here you discover a room containing rows of shelves crammed with crates,
 barrels, boxes and other containers. It smells damp and musty here. In the
 middle of the room is a large metal cylinder with a door set into its side
@@ -287,14 +287,14 @@ while name == "":
      dprint("please enter your first name only\n")
      dprint("What is your name:  ")
      name = input().lower().strip()
-dprint(f'Greetings {name}!\n Welcome to the outpost')
+dprint(f'Greetings {name}!\n Welcome to the Outpost')
+time.sleep(1)
 dprint('.')
 time.sleep(1)
 dprint('.\n')
-dprint ('Do you wish to start the game?  ')
+dprint ('Do you wish to start the game?\n ')
 start = input().lower().strip()
 if start in begin:
-
     dprint('Then let us begin\n')
     dprint('.')
     time.sleep(tdelay)
