@@ -50,7 +50,7 @@ and a hatch leading SOUTH. The corridor ends in an open doorway leading NORTH.
 Would you like to take the FIRST or SECOND door to the east, or head NORTH or
 SOUTH\n"""
 ,[0,0,13,11,9,10,0],"")
-r11=room(11,"""A room containing rows of shelves packed with crates, barrels, boxes and
+r11=room(11,"""You find yourself in a room containing rows of shelves packed with crates, barrels, boxes and
 other containers. It smells damp and musty here. On one shelf stands a metal
 box, seemingly empty. There is a small hatch in the bottom of the box. You open
 the box and find that it contains a large collection of vials, each labeled
@@ -80,11 +80,11 @@ of the far corner of the room, and moves quickly to get out of sight. The whole
 chamber is filled with a low hissing noise. There are 4 exits here NORTH,
 SOUTH, WEST and to the EAST\n"""
 ,[2,9,11,3,0,0,0],"")
-r7=room(7,"""You open the door and find yourself facing a narrow corridor. Its walls are
+r7=room(7,"""You enter the opening and find yourself facing a narrow corridor. Its walls are
 decorated with strange carvings, each one depicting some kind of bizarre
 monster. There is a door to the NORTH and another to the EAST.\n """
 ,[4,0,13,0,0,0,0],"")
-r6 =room(6,"""You decide to explore the airvents which lead you to a large circular room
+r6 =room(6,"""You decide to explore further which leads you to a large circular room
 lit by powerful energy crystals hanging from the wall. Some kind of equipment
 is bolted to the floor here, but most of it lies broken and twisted. There is a
 narrow passage leading NORTH through the center of the room. To the WEST you
@@ -99,7 +99,7 @@ gears and wheels remain intact, along with a couple of wires that run down its
 spine. All the other parts lie scattered across the floor.There is a ladder to
 the WEST, and exits to the NORTH and EAST \n """
 ,[3,10,9,0,0,0,0],"")
-r4 =room(4,"""You follow the hall to the left and enter a large room filled with ancient,
+r4 =room(4,"""You follow the hall and enter a large room filled with ancient,
 battered machinery. The walls and ceiling are covered in flickering blue energy
 crystals that pulse with strange patterns. A narrow catwalk runs along the top
 of this chamber. A long corridor continues WEST, to the NORTH is a small
@@ -220,7 +220,7 @@ like to speak to the AI press 3\n """,
                 else:
                      dprint("""'captain I believe I have been infected with a complex virus, I only have
 nothing left to say, I only have nothing left to say'... The computer continues
-as you wonder how you can fix this mess""")
+as you wonder how you can fix this mess\n""")
             elif goal in pickup and rooms[location].extra != "":
                  if location==1 and inv[0]==False:
                       dprint(rooms[location].extra)
@@ -244,7 +244,7 @@ as you wonder how you can fix this mess""")
             elif location ==14 and goal == "nothing" :
                  dprint("""'That is the correct answer, I wish you luck on your journey captain' You
 suddenly find yourself transported back to your ship, with all systems
-apparantly functioning.'glad to see you captain, I sense a large anti matter
+apparently functioning.'glad to see you captain, I sense a large anti matter
 buildup in the outposts main engine room, I have full control of our vessel now
 and am initiating the undocking sequence, we must escape quickly' The ship
 rattles wildly as the main engines power up. You see the outpost move away from
