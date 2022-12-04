@@ -4,8 +4,7 @@ import random
 
 delay = .0
 tdelay = .0
-        
-condition =True
+
 def dprint(s):
     for c in s:
         sys.stdout.write(c)
@@ -33,7 +32,7 @@ back = ["back","b","south","s","down"]
 one =["1","one","door one" "z","first","1st" ]
 two =["2","two","door two", "second","2nd"]
 three =["3","three","door three","door 3","third", "3rd"]
-pickup =["take","pickup","grab","use","p","examine"]
+pickup =["take","pickup","grab","use","p","examine","book"]
 ship =["return","ship","enter"]
 go = ["go","walk","run"]
 
@@ -42,11 +41,11 @@ r13=room(13,"""This room seems to be the central control room of this facility. 
 r12=room(12,"""You find yourself in a long corridor with 2 doors leading off to the EAST and a hatch leading SOUTH. The corridor ends in an open doorway leading NORTH. Would you like to take the FIRST or SECOND door to the east, or head NORTH or SOUTH\n""",[11,0,13,0,9,10,0],"You examine the contents of the crate. Inside you find a small stack of papers. They are written in what appears to be an ancient script, which you do not recognize.\n")
 r11=room(11,"""A room containing rows of shelves packed with crates, barrels, boxes and other containers. It smells damp and musty here.
 On one shelf stands a metal box, seemingly empty. There is a small hatch in the bottom of the box. You open the box and find that it contains a large collection of vials, each labeled with a different chemical compound.To the EAST looks like a long corridor, and a circular room is visable to the SOUTH\n """,[0,12,0,8,0,0,0],"")
-r10=room(10,""" you enter a small room with an old wooden desk. On top of the desk sits a book that looks like it might contain useful information. There is a ladder to the WEST and an exit heading NORTH\n """,[0,0,12,5,0,0,0],"You suddenly find yourself engulfed in light and find yourself transported to a new location in the station")
+r10=room(10,""" you enter a small room with an old wooden desk. On top of the desk sits a book that looks like it might contain useful information. There is a ladder to the WEST and an exit heading NORTH\n """,[0,0,12,5,0,0,0],"You suddenly find yourself engulfed in light and find yourself transported to a new location in the station...")
 r9=room(9,"""Here you discover a room containing rows of shelves crammed with crates, barrels, boxes and other containers. It smells damp and musty here. In the middle of the room is a large metal cylinder with a door set into its side labeled Z. There appears to be a long corridor to the EAST.There is also a passage leading WEST to the upper level.\n """,[8,12,0,0,5,0,0],"")
 r8=room(8,"""A large dome shaped room, full of floating globes of glowing jelly. They wave gently in the air currents, occasionally bumping into each other. Some of them glow brightly, making the entire room throb with an eerie green light. Your flashlight barely penetrates the gloom, illuminating only the nearest jelly globe. This one pulses with a soft red light. The others seem to be inactive.
 There are several more jelly globes beyond this one. Most of them appear to be inert, but one glows dimly with a yellowish light. It appears to notice your presence and slowly moves toward you. Another jelly globe pokes out of the far corner of the room, and moves quickly to get out of sight. The whole chamber is filled with a low hissing noise. There are 4 exits here NORTH, SOUTH, WEST and to the EAST\n""",[2,9,11,3,0,0,0],"")
-r7=room(7,"""You open the door and find yourself facing a narrow corridor. Its walls are decorated with strange carvings, each one depicting some kind of bizarre monster. There is a door to the NORTH and another to the SOUTH.\n """,[0,0,13,4,0,0,0],"")
+r7=room(7,"""You open the door and find yourself facing a narrow corridor. Its walls are decorated with strange carvings, each one depicting some kind of bizarre monster. There is a door to the NORTH and another to the EAST.\n """,[4,0,13,0,0,0,0],"")
 r6 =room(6,"""You decide to explore the airvents which lead you to a large circular room lit by powerful energy crystals hanging from the wall. Some kind of equipment is bolted to the floor here, but most of it lies broken and twisted. There is a narrow passage leading NORTH through the center of the room. To the WEST you can see broken machinary littered around and to the EAST is a dark room with a small flashing light\n""",[4,2,13,0,0,0,0],"")
 r5 =room(5,"""The room seems empty except for an oddly shaped piece of machinery resting on the floor. The machine is made of a dull gray metal and looks vaguely humanoid. It resembles a mechanical man standing upright, with four long legs, a torso, and a cylindrical head.
 The machine has been broken into pieces. A few gears and wheels remain intact, along with a couple of wires that run down its spine. All the other parts lie scattered across the floor.There is a ladder to the EAST, and exits to the NORTH and WEST \n """ ,[10,3,9,0,0,0,0],"")
@@ -66,7 +65,9 @@ def logic():
             global rooms
             goal = input().strip().lower()
             global key,lazer,book
-                       
+            if " " in goal:
+                 dprint("please only use 1 word commands with no spaces\n")
+                 logic()
             if goal in go:
                  dprint("please don't use that word, just pick an option OK\n")
                  logic()
@@ -134,6 +135,7 @@ def logic():
                  elif location ==10 :
                       dprint(rooms[location].extra)
                       location = random.choice(rooms).number
+                      loop()
                  else:
                     dprint(rooms[location].extra)
             elif goal in ship and location == 1:
@@ -151,7 +153,7 @@ def logic():
                  time.sleep(tdelay)
                  dprint("congratulations on completing the outpost, many adventurers have fallen here, and we commend you for your wit,skill and expertise, see you in the next adventure.")
             elif location ==14 and goal != "nothing":
-                 dprint("'that is incorrect, I am sorry captain you are not worthy'The room starts to fill with a noxious gas, you try to find some way out but you soon lose consciousness.GAME OVER")
+                 dprint("'that is incorrect, I am sorry captain you have not worthy.'The room starts to fill with a noxious gas, you try to find some way out but you soon lose consciousness.GAME OVER")
                  quit() 
             else:
                 dprint("please choose a valid option\n ")
@@ -165,13 +167,17 @@ def loop():
     
 dprint("Welcome\n")
 dprint("What is your name:  ")
-name = input()
+name = input().lower().strip()
+while name == "":
+     dprint("please enter your first name only\n")
+     dprint("What is your name:  ")
+     name = input().lower().strip()
 dprint(f'Greetings {name}!\n Welcome to the outpost')
 dprint('.')
 time.sleep(1)
 dprint('.\n')
 dprint ('Do you wish to start the game?  ')
-start = input()
+start = input().lower().strip()
 if start in begin:
 
     dprint('Then let us begin')
