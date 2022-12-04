@@ -1,9 +1,7 @@
-import time
-import sys
+
 
 delay = 0
 tdelay = 0
-
         
 condition =True
 def dprint(s):
@@ -18,10 +16,12 @@ class room:
         self.desc =desc
         self.options=options
         self.extra=extra
+
 key =False
 lazer = False
 book=False
 inv = [key,lazer,book]
+
 begin = ["play","p","y","yes","start","s"]
 left = ["left","l","w","west"]
 right = ["right","r","east","e"]
