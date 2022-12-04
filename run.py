@@ -1,9 +1,7 @@
 import sys
 import time
 import random
-import textwrap
 
-wrapper = textwrap.TextWrapper(width=80)
 delay = .0
 tdelay = .0
 
@@ -161,7 +159,7 @@ def logic():
                 dprint("please choose a valid option\n ")
                 logic() 
 def loop():
-        dprint(wrapper.fill(text=rooms[location].desc))
+        dprint(rooms[location].desc)
         logic()
         loop()
         
