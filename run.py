@@ -14,14 +14,15 @@ def dprint(s):
 class room:
     def __init__(self,number,desc,options,extra):
         self.number = number
-        self.desc =desc
-        self.options=options
-        self.extra=extra
+        self.desc = desc
+        self.options= options
+        self.extra= extra
 
 key =False
 lazer = False
 book=False
 inv = [key,lazer,book]
+tries=3
 
 begin = ["play","p","y","yes","start","s"]
 left = ["left","l","w","west"]
@@ -35,7 +36,7 @@ pickup =["take","pickup","grab","use","p","examine"]
 ship =["return","ship","enter"]
 go = ["go","walk","run"]
 
-r14=room(14,"""You enter the room and the door shuts tight behind you 'Hello captain , I have been watching you for quite some time. If you can answer this riddle I will allow you to leave """,[0,0,0,0,0,0,0],"")
+r14=room(14,"""You enter the room and the door shuts tight behind you 'Hello captain , I have been watching you for quite some time. If you can answer this riddle I will allow you to leave 'What is greater than God, More evil than the devil, The poor have it, The rich don't need it, And if you eat it, you'll die?'""",[0,0,0,0,0,0,0],"")
 r13=room(13,"""This room seems to be the central control room of this facility. In the middle of the room is a large console, surrounded by switches, dials and knobs. There is a door to the EAST and another to the WEST.you can see two doors on a lower platform , you may enter door 1 or door 2 """,[7,12,0,0,6,14,0],"")
 r12=room(12,"""You find yourself in a long corridor with 2 doors leading off to the EAST and a hatch leading SOUTH. The corridor ends in an open doorway leading NORTH. Would you like to take the FIRST or SECOND door to the east, or head NORTH or SOUTH\n""",[11,0,13,0,9,10,0],"You examine the contents of the crate. Inside you find a small stack of papers. They are written in what appears to be an ancient script, which you do not recognize.\n")
 r11=room(11,"""A room containing rows of shelves packed with crates, barrels, boxes and other containers. It smells damp and musty here.
@@ -56,12 +57,27 @@ r0 =room(0,"You exit your stasis pod and look out the ships window to see a huge
  [0,0,0,0,1,1,1],"")
 rooms =[r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13,r14]
 
-location = 0
+location = 14
 
 def logic():
-            global location
+            
+            global location 
+            location = 14
+            global rooms
+            global tries
             goal = input().strip().lower()
             global key,lazer,book
+            if location ==14 and goal == "nothing" :
+                 dprint("'That is the correct answer, I wish you luck on your journey captain' You suddenly find yourself transported back to your ship, with all systems apparantly functioning.'glad to see you captain, I sense a large anti matter buildup in the outposts main engine room, I have full control of our vessel now and am initiating the undocking sequence, we must escape quickly' The ship rattles wildly as the main engines power up. You see the outpost move away from you rapidly, and in a matter of seconds there is a blinding light as the outpost explodes with a huge shockwave jolting the ship. 'I am glad for your safe return captain, I feared our journey might have ended there, please resume your position in your statis pod and I will continue our course home' You cimb into your statis pod and think of what may have become of you had you not kept your wits about you. The stasis pod closes and you smell the familiar odor of stasis gases. ' We shall find home soon captain, sleep well")
+                 time.sleep(tdelay)
+                 dprint('.')
+                 time.sleep(tdelay)
+                 dprint('.')
+                 time.sleep(tdelay)
+                 dprint("congratulations on completing the outpost, many adventurers have fallen here, and we commend you for your wit,skill and expertise, see you in the next adventure.")
+            else :
+                 dprint("'that is incorrect, I am sorry captain you are not worthy'The room starts to fill with a noxious gas, you try to find some way out but you soon lose consciousness.GAME OVER")
+                 quit()            
             if goal in go:
                  dprint("please don't use that word, just pick an option OK\n")
                  logic()
@@ -100,11 +116,17 @@ def logic():
                     location = rooms[location].options[5]
                     loop()
                 else:                     
-                     dprint("after much searching you find a small lazer device with enough charge for 2 uses, it may come in handy. You decide to leave the ship and investigate the outpost\n")
-                     
+                     dprint("after much searching you find a small lazer device with enough charge for 2 uses, it may come in handy.\n")
+                     lazer=True
+                     rooms[0].desc="  There is no sign of any movement, and the place seems eerily quiet.If you would like to leave the ship and investigate the outpost press 1, if you would like to speak to the AI press 3\n ",
+                     rooms[0].options=[0,0,0,0,1,0,1]
+                     loop()
             elif  goal in three and rooms[location].options[6] != 0:
-                location = rooms[location].options[6]
-                loop()
+                if location !=0:
+                    location = rooms[location].options[6]
+                    loop()
+                else:
+                     dprint("'captain I believe I have been infected with a complex virus, I only have nothing left to say, I only have nothing left to say'... The computer continues as you wonder how you can fix this mess")
             elif goal in pickup and rooms[location].extra != "":
                  if location==1 and inv[0]==False:
                       dprint(rooms[location].extra)
@@ -117,31 +139,30 @@ def logic():
                     dprint(rooms[location].extra)
             elif goal in ship and location == 1:
                  location = 0
-                 dprint(rooms[0].desc.strip('You exit your stasis pod and look out the ships window to see a huge crystalline palace before you.'))
-                 logic()
+                 if lazer ==False :
+                    dprint(rooms[0].desc.strip('You exit your stasis pod and look out the ships window to see a huge crystalline palace before you.'))
+                    logic()
             else:
                 dprint("please choose a valid option\n ")
                 logic() 
 def loop():
-        print(location)
         dprint(rooms[location].desc)
         logic()
         loop()
         
-        
-        
+     
     
+dprint("Welcome\n")
+dprint("What is your name\n ")
+name = input()
+dprint(f'Greetings {name}! welcome to the outpost\n')
+dprint('.')
+time.sleep(1)
+dprint('.')
+dprint ('Do you wish to start the game or not ? ')
+start = input()
+if start in begin:
 
-# dprint("What is your name ")
-# name = input()
-# dprint(f'Greetings {name}! welcome to the outpost')
-# dprint('.')
-# time.sleep(1)
-# dprint('.')
-# dprint ('Do you wish to start the game or not ? ')
-# start = input()
-# if start in begin:
-while (condition):
     dprint('then let us begin')
     dprint('.')
     time.sleep(tdelay)
@@ -152,7 +173,7 @@ while (condition):
     dprint("""You awake from stasis, a flash of blinding light, your memory is fogged and cloudy. "Welcome back Captain" the familiar voice of the ships AI echoes " I have some troubling news, we have docked with an unknown outpost, it seems the outpost had a tractor beam which overpowered my engines. I am currently helpless to move the ship, and the outpost is not responding to our communications."
     """)
     condition=False
-# else:
-#     dprint('well I guess you better get on with your incredible existence then, Human..')
-#     quit()
+else:
+    dprint('well I guess you better get on with your incredible existence then, Human..')
+    quit()
 loop()

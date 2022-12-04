@@ -26,6 +26,7 @@ This made it easy to organise and iterate through each rooms dialogue and  optio
 
 # Bugs
 - There was a bug found with the lock on level 12, it seemed I had confused some of the logic with room 5, so it was a simple fix to rearrange the logic to fix the error.
+# Deployment 
 
 ### Version Control
 - I used git as the version control software. With the use of the commands git add . , git commit -m "", and git push , I was able to add, save and push code to the github repository.
