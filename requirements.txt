@@ -1,2 +1,2 @@
-import time
-import sys
+time
+sys
