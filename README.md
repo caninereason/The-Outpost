@@ -5,14 +5,14 @@ The outpost is a simple text adventure game made in python. The player must navi
 I was fascinated by the "choose your own adventure" books as a child, and wished to create a science fiction themed version. I had been thinking of this theme for a long time and this project seemed like the ideal place to bring this story to life.
 
 ## Technologies used
--[Heroku](https://heroku.com) to deploy the website.
--[Python](https://www.python.org/) for the main game-play.
--[GitHub](https://github.com/) as a remote repository.
--[Visual Studio Code](https://code.visualstudio.com/) as a local IDE & repository.
+- [Heroku](https://heroku.com) to deploy the website.
+- [Python](https://www.python.org/) for the main game-play.
+- [GitHub](https://github.com/) as a remote repository.
+- [Visual Studio Code](https://code.visualstudio.com/) as a local IDE & repository.
 
 ## Target Audience
--lovers of science fiction
--people who enjoy text adventure games and interactive novels
+- lovers of science fiction
+- people who enjoy text adventure games and interactive novels
 
 # Implementation
 - I opted for a game loop which would print each scenario, the rooms would be organised into a collection of arrays, containing the room number, room text, optional text for keys etc. and an array of exits. This array would contain a zero if that direction was unavailable, or if this exit was available, it would contain the connecting rooms number. This allowed me to orgainize and edit the rooms and connections in an intuitive way

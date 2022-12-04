@@ -34,7 +34,7 @@ pickup =["take","pickup","grab","use","p","examine"]
 ship =["return","ship","enter"]
 go = ["go","walk","run"]
 
-r14=room(14,"""room14 """,[0,0,0,0,0,0,0],"")
+r14=room(14,"""You enter the room and the door shuts tight behind you 'Hello captain , I have been watching you for quite some time. If you can answer this riddle I will allow you to leave """,[0,0,0,0,0,0,0],"")
 r13=room(13,"""This room seems to be the central control room of this facility. In the middle of the room is a large console, surrounded by switches, dials and knobs. There is a door to the EAST and another to the WEST.you can see two doors on a lower platform , you may enter door 1 or door 2 """,[7,12,0,0,6,14,0],"")
 r12=room(12,"""You find yourself in a long corridor with 2 doors leading off to the EAST and a hatch leading SOUTH. The corridor ends in an open doorway leading NORTH. Would you like to take the FIRST or SECOND door to the east, or head NORTH or SOUTH\n""",[11,0,13,0,9,10,0],"You examine the contents of the crate. Inside you find a small stack of papers. They are written in what appears to be an ancient script, which you do not recognize.\n")
 r11=room(11,"""A room containing rows of shelves packed with crates, barrels, boxes and other containers. It smells damp and musty here.
@@ -80,7 +80,7 @@ def logic():
                     dprint("the door is locked, there must be another way around")
                     loop()
                 elif location==12 and inv[0] == True:
-                     dprint("as you approach the door the object in your pocket begins to pulse and vibrate. Suddenly there is a loud piercing sound and the door slides open revealing a huge central control station. You enter cau1tiously...")
+                     dprint("as you approach the door the object in your pocket begins to pulse and vibrate. Suddenly there is a loud piercing sound and the door slides open revealing a huge central control station. You enter cautiously...")
                      location = rooms[location].options[2]
                      loop()
                 else:
