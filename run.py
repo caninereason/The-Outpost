@@ -1,5 +1,3 @@
-
-
 delay = 0
 tdelay = 0
         
