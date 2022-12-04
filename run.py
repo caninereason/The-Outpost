@@ -1,8 +1,9 @@
 import sys
 import time
+import random
 
-delay = .02
-tdelay = .5
+delay = .0
+tdelay = .0
         
 condition =True
 def dprint(s):
@@ -20,15 +21,15 @@ class room:
 
 key =False
 lazer = False
-book=False
-inv = [key,lazer,book]
-tries=3
+
+inv = [key,lazer]
+rand = [7,12,6]
 
 begin = ["play","p","y","yes","start","s"]
 left = ["left","l","w","west"]
 right = ["right","r","east","e"]
 straight = ["forward","f","north","n","up"]
-back = ["back","b","SOUTH","s","down"]
+back = ["back","b","south","s","down"]
 one =["1","one","door one" "z","first","1st" ]
 two =["2","two","door two", "second","2nd"]
 three =["3","three","door three","door 3","third", "3rd"]
@@ -41,7 +42,7 @@ r13=room(13,"""This room seems to be the central control room of this facility. 
 r12=room(12,"""You find yourself in a long corridor with 2 doors leading off to the EAST and a hatch leading SOUTH. The corridor ends in an open doorway leading NORTH. Would you like to take the FIRST or SECOND door to the east, or head NORTH or SOUTH\n""",[11,0,13,0,9,10,0],"You examine the contents of the crate. Inside you find a small stack of papers. They are written in what appears to be an ancient script, which you do not recognize.\n")
 r11=room(11,"""A room containing rows of shelves packed with crates, barrels, boxes and other containers. It smells damp and musty here.
 On one shelf stands a metal box, seemingly empty. There is a small hatch in the bottom of the box. You open the box and find that it contains a large collection of vials, each labeled with a different chemical compound.To the EAST looks like a long corridor, and a circular room is visable to the SOUTH\n """,[0,12,0,8,0,0,0],"")
-r10=room(10,""" you enter a small room with an old wooden desk. On top of the desk sits a book that looks like it might contain useful information. There is a ladder to the WEST and an exit heading NORTH\n """,[5,0,12,0,0,0,0],"")
+r10=room(10,""" you enter a small room with an old wooden desk. On top of the desk sits a book that looks like it might contain useful information. There is a ladder to the WEST and an exit heading NORTH\n """,[0,0,12,5,0,0,0],"You suddenly find yourself engulfed in light and find yourself transported to a new location in the station")
 r9=room(9,"""Here you discover a room containing rows of shelves crammed with crates, barrels, boxes and other containers. It smells damp and musty here. In the middle of the room is a large metal cylinder with a door set into its side labeled Z. There appears to be a long corridor to the EAST.There is also a passage leading WEST to the upper level.\n """,[8,12,0,0,5,0,0],"")
 r8=room(8,"""A large dome shaped room, full of floating globes of glowing jelly. They wave gently in the air currents, occasionally bumping into each other. Some of them glow brightly, making the entire room throb with an eerie green light. Your flashlight barely penetrates the gloom, illuminating only the nearest jelly globe. This one pulses with a soft red light. The others seem to be inactive.
 There are several more jelly globes beyond this one. Most of them appear to be inert, but one glows dimly with a yellowish light. It appears to notice your presence and slowly moves toward you. Another jelly globe pokes out of the far corner of the room, and moves quickly to get out of sight. The whole chamber is filled with a low hissing noise. There are 4 exits here NORTH, SOUTH, WEST and to the EAST\n""",[2,9,11,3,0,0,0],"")
@@ -57,13 +58,12 @@ r0 =room(0,"You exit your stasis pod and look out the ships window to see a huge
  [0,0,0,0,1,1,1],"")
 rooms =[r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13,r14]
 
-location = 0
+location = 10
 
 def logic():
             
             global location 
             global rooms
-            global tries
             goal = input().strip().lower()
             global key,lazer,book
                        
@@ -101,7 +101,14 @@ def logic():
                 loop()
                
             elif  goal in two and rooms[location].options[5] != 0:
-                if location !=0:
+                if location ==13 and lazer :
+                    dprint("As you approach the door you hear a sharp metalic sound and what looks like a gun turret comes up from the floor. You stand back and fire your lazer and the turret disintegrates, leaving you free passage to the room. You enter cautiously")
+                    location= 14
+                    loop()
+                elif  location ==13 and lazer !=True:
+                     dprint("As you approach the door you hear a sharp metalic sound and what looks like a gun turret comes up from the floor. It starts firing wildly in your direction and you run for the nearest exit, barely escaping being vaporised\n")
+                     location=random.choice(rand)
+                elif location !=0:
                     location = rooms[location].options[5]
                     loop()
                 else:                     
@@ -124,6 +131,9 @@ def logic():
                  elif location==1 and inv[0]==True:
                     dprint("you already took the object\n")
                     logic()
+                 elif location ==10 :
+                      dprint(rooms[location].extra)
+                      location = random.choice(rooms).number
                  else:
                     dprint(rooms[location].extra)
             elif goal in ship and location == 1:
@@ -131,6 +141,7 @@ def logic():
                  if lazer ==False :
                     dprint(rooms[0].desc.strip('You exit your stasis pod and look out the ships window to see a huge crystalline palace before you.'))
                     logic()
+            
             elif location ==14 and goal == "nothing" :
                  dprint("'That is the correct answer, I wish you luck on your journey captain' You suddenly find yourself transported back to your ship, with all systems apparantly functioning.'glad to see you captain, I sense a large anti matter buildup in the outposts main engine room, I have full control of our vessel now and am initiating the undocking sequence, we must escape quickly' The ship rattles wildly as the main engines power up. You see the outpost move away from you rapidly, and in a matter of seconds there is a blinding light as the outpost explodes with a huge shockwave jolting the ship. 'I am glad for your safe return captain, I feared our journey might have ended there, please resume your position in your statis pod and I will continue our course home' You cimb into your statis pod and think of what may have become of you had you not kept your wits about you. The stasis pod closes and you smell the familiar odor of stasis gases. ' We shall find home soon captain, sleep well")
                  time.sleep(tdelay)
