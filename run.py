@@ -2,8 +2,8 @@ import sys
 import time
 import random
 
-delay = .02
-tdelay = .07
+delay = .0
+tdelay = .0
 
 def dprint(s):
     for c in s:
@@ -126,16 +126,16 @@ way would you like to go?\n"""
 r1 =room(1,"""The Crystal Palace looms high above you as you step out onto its vast
 landing bay. The lights glow softly inside the enormous structure, casting long
 shadows across the crystalline walls. You can see a small flashing object on
-the ground, apart from that there does'nt seem to be anything else around you
-or anywhere near the ship. There are three doors here, each marked with some
-alien hieroglyphics you have never seen before.You may return to the SHIP or
-would you like to choose 1, 2 or 3?\n """,[0,0,0,0,4,2,3] ,"""you take the object
+the ground,This place has a cold ominous prescence and you fear if you do not find
+a way out soon, you will be stuck here forever. 
+There are three doors here, each marked with some alien hieroglyphics you have never 
+seen before.You may return to the SHIP or would you like to choose 1, 2 or 3?\n """,[0,0,0,0,4,2,3] ,"""you take the object
 which looks much like a key of some sort.You may return to the SHIP or would
 you like to choose 1, 2 or 3?\n"""
 )
-r0 =room(0,"""You exit your stasis pod and look out the ships window to see a huge
-crystalline palace before you. There is no sign of any movement, and the place
-seems eerily quiet. If you would like to leave the ship and investigate the
+r0 =room(0,"""You exit your stasis pod and see a huge crystalline palace out the window.
+There is no sign of any movement, and the place seems eerily quiet.
+If you would like to leave the ship and investigate the
 outpost press 1, if you would like to search the ship for any valuable supplies
 press 2. If you would like to speak to the AI press 3\n """
 , [0,0,0,0,1,1,1],"")
@@ -147,6 +147,7 @@ def logic():
             
             global location 
             global rooms
+            global r1
             goal = input().strip().lower()
             global key,lazer,book
             if " " in goal:
@@ -225,9 +226,16 @@ as you wonder how you can fix this mess\n""")
                  if location==1 and inv[0]==False:
                       dprint(rooms[location].extra)
                       inv[0]=True
+                      rooms[1].desc ="""The Crystal Palace looms high above you as you step out onto its vast
+landing bay. The lights glow softly inside the enormous structure, casting long
+shadows across the crystalline walls.This place has a cold ominous prescence and you fear
+ if you do not find a way out soon, you will be stuck here forever. 
+There are three doors here, each marked with some alien hieroglyphics you have never 
+seen before.You may return to the SHIP or would you like to choose 1, 2 or 3?\n """
                       logic()
                  elif location==1 and inv[0]==True:
                     dprint("you already took the object\n")
+                    
                     logic()
                  elif location ==10 :
                       dprint(rooms[location].extra)
@@ -236,11 +244,11 @@ as you wonder how you can fix this mess\n""")
                  else:
                     dprint(rooms[location].extra)
             elif goal in ship and location == 1:
+                 
                  location = 0
-                 if lazer ==False :
-                    dprint(rooms[0].desc.strip('You exit your stasis pod and look out the ships window to see a huge crystalline palace before you.'))
-                    logic()
-            
+                 dprint(rooms[0].desc.strip("""You exit your stasis pod and see a huge crystalline palace out the window.. """))
+                 logic()
+                 
             elif location ==14 and goal == "nothing" :
                  dprint("""'That is the correct answer, I wish you luck on your journey captain' You
 suddenly find yourself transported back to your ship, with all systems
@@ -282,7 +290,7 @@ def loop():
     
 dprint("Welcome\n")
 dprint("What is your name:  ")
-name = input().lower().strip()
+name = input().strip()
 while name == "":
      dprint("please enter your first name only\n")
      dprint("What is your name:  ")
@@ -295,12 +303,12 @@ dprint('.\n')
 dprint ('Do you wish to start the game?\n ')
 start = input().lower().strip()
 if start in begin:
-    dprint('Then let us begin\n')
+    dprint('Then let us begin')
     dprint('.')
     time.sleep(tdelay)
     dprint('.')
     time.sleep(tdelay)
-    dprint('.')
+    dprint('.\n')
     time.sleep(tdelay)
     dprint("""You awake from stasis,a flash of blinding light, your memory is fogged and
 cloudy. "Welcome back Captain" the familiar voice of the ships AI echoes " I
