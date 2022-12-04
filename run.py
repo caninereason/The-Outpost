@@ -1,3 +1,6 @@
+import sys
+import time
+
 delay = 0
 tdelay = 0
         
