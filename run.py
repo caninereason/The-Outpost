@@ -307,7 +307,7 @@ cloudy. "Welcome back Captain" the familiar voice of the ships AI echoes " I
 have some troubling news, we have docked with an unknown outpost, it seems the
 outpost had a tractor beam which overpowered my engines. I am currently
 helpless to move the ship, and the outpost is not responding to our
-communications."     """)
+communications."\n""")
   
 else:
     dprint('Well I guess you better get on with your incredible existence then, Human..')
