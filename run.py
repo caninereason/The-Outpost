@@ -2,8 +2,8 @@ import sys
 import time
 import random
 
-delay = .0
-tdelay = .0
+delay = .02
+tdelay = .07
 
 def dprint(s):
     for c in s:
@@ -141,7 +141,7 @@ press 2. If you would like to speak to the AI press 3\n """
 , [0,0,0,0,1,1,1],"")
 rooms =[r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13,r14]
 
-location = 10
+location = 0
 
 def logic():
             
@@ -295,14 +295,14 @@ dprint ('Do you wish to start the game?  ')
 start = input().lower().strip()
 if start in begin:
 
-    dprint('Then let us begin')
+    dprint('Then let us begin\n')
     dprint('.')
     time.sleep(tdelay)
     dprint('.')
     time.sleep(tdelay)
     dprint('.')
     time.sleep(tdelay)
-    dprint("""You awake from stasis, a flash of blinding light, your memory is fogged and
+    dprint("""You awake from stasis,a flash of blinding light, your memory is fogged and
 cloudy. "Welcome back Captain" the familiar voice of the ships AI echoes " I
 have some troubling news, we have docked with an unknown outpost, it seems the
 outpost had a tractor beam which overpowered my engines. I am currently
