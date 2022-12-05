@@ -391,10 +391,10 @@ stasis gases. ' We shall find home soon captain,  sleep well"""
         time.sleep(tdelay)
         dprint(".")
         time.sleep(tdelay)
-        dprint(
-            """congratulations on completing the outpost,  many adventurers have fallen
-here,  and we commend you for your wit, skill and expertise,  see you in the next
-adventure.""")quit()
+        dprint("""congratulations on completing the outpost, many adventurers 
+have fallen here,  and we commend you for your wit, skill and expertise,
+see you in the next adventure.""")
+        quit()
 
     elif location == 14 and goal != "nothing":
         dprint(
@@ -456,4 +456,3 @@ else:
     )
     quit()
 loop()
-    
