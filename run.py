@@ -2,7 +2,6 @@ import sys
 import time
 import random
 
-
 delay = .02
 tdelay = 1
 
@@ -255,7 +254,7 @@ You may return to the SHIP or would you like to choose 1, 2 or 3?\n """
             elif goal in ship and location == 1:
                  
                  location = 0
-                 dprint(rooms[0].desc.strip("""You exit your stasis pod and see a huge crystalline palace out the window.. """))
+                 dprint(rooms[0].desc.strip("""You exit your stasis pod and see a huge crystalline palace out the window."""))
                  logic()
                  
             elif location ==14 and goal == "nothing" :
@@ -292,6 +291,7 @@ consciousness.GAME OVER"""
                 logic() 
 #main game loop, printing rooms description and options                
 def loop():
+        
         dprint(rooms[location].desc)
         logic()
         loop()
