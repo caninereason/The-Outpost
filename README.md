@@ -23,12 +23,15 @@ I was fascinated by the "choose your own adventure" books as a child, and wished
 ## Future Features
 - I have had the idea for this project for a long time and felt it could make a compelling narrative. The arrangement of each room's array is organized so future additions and editing rooms would be quite simple. In the future I would like to further develop the storyline, adding more rooms, pickups, graphics and scenarios. However the text adventure game style is not to everyone's liking and I may change this to incorporate better graphics, UI and playability. 
 
-# Design
+## Design
 - I began by drawing a map of all the rooms, and using this map I proceeded to populate each room with it's appropriate number, description, exits and pickups.
-This made it easy to organize and iterate through each rooms dialogue and  options. I then added a few interactive elements such as a laser, a key to pickup and a book the player could examine which would teleport them to a random room. Given the scope of this project I found these to be a sufficient number of interactable objects.
-
+This made it easy to organize and iterate through each rooms dialogue and  options. I then added a few interactive elements such as a laser, a key to pickup and a book the player could examine which would teleport them to a random room. Given the scope of this project I found these to be a sufficient number of interactable objects. Below is a map of the rooms. 
 ![alt text](readme_docs/map.png)
-# Implementation
+
+## Data Structure
+- The rooms in the outpost are organized into a class with 4 main attributes; number, description, options and extra. Number represents the room, while the description holds the text for the room. The Options category is an array which holds the rooms exits, and extra is there for any pickups or other interactable objects.
+
+## Implementation
 - I opted for a game loop which would print each scenario, the rooms being organized into a collection of arrays, containing the room number, room text, optional text for keys etc. and an array of exits. This array would contain a zero if that direction was unavailable, or if this exit was available, it would contain the connecting rooms number. This allowed me to organize and edit the rooms and connections in an intuitive way. I also gave the rooms an 'extra' variable, which if populated would allow the user to interact with something or change the initial description based on which direction they might come from. This was implemented sparsely but does work as a good option should I want to add objects in the future. 
 
 # Testing
