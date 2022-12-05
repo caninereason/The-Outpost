@@ -19,6 +19,8 @@ class room:
         self.options= options
         self.extra= extra
 
+#clear screen
+clear=True
 #inventory bools
 key =False
 lazer = False
@@ -157,7 +159,9 @@ def logic():
             global r1
             goal = input().strip().lower()
             global key,lazer
-            os.system('cls' if os.name == 'nt' else 'clear')
+            if clear !=True :
+                os.system('cls' if os.name == 'nt' else 'clear')
+                clear =False
             if " " in goal:
                  dprint("please only use 1 word commands with no spaces\n")
                  logic()
@@ -286,7 +290,8 @@ consciousness.GAME OVER"""
                  quit() 
             else:
                 dprint("please choose a valid option\n ")
-                logic() 
+                clear =True
+                loop() 
 #main game loop, printing rooms description and options                
 def loop():
         dprint(rooms[location].desc)
