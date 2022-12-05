@@ -2,15 +2,16 @@ import sys
 import time
 import random
 
-delay = .0
-tdelay = .0
+delay = .02
+tdelay = .08
 
+#delay print time
 def dprint(s):
     for c in s:
         sys.stdout.write(c)
         sys.stdout.flush()
         time.sleep(delay)
-
+#initial room definition
 class room:
     def __init__(self,number,desc,options,extra):
         self.number = number
@@ -18,12 +19,13 @@ class room:
         self.options= options
         self.extra= extra
 
+#inventory bools
 key =False
 lazer = False
-
 inv = [key,lazer]
 rand = [7,12,6]
 
+#direction bools
 begin = ["play","p","y","yes","start","s"]
 left = ["left","l","w","west"]
 right = ["right","r","east","e"]
@@ -36,6 +38,7 @@ pickup =["take","pickup","grab","use","p","examine","book"]
 ship =["return","ship","enter"]
 go = ["go","walk","run"]
 
+#room number,description,connections array and extra options
 r14=room(14,"""You enter the room and the door shuts tight behind you 'Hello captain , I
 have been watching you for quite some time. If you can answer this riddle I
 will allow you to leave 'What is greater than God, More evil than the devil,
@@ -47,7 +50,7 @@ lower platform , you may enter door 1 or door 2 """
 ,[7,12,0,0,6,14,0],"")
 r12=room(12,"""You find yourself in a long corridor with 2 doors leading off to the EAST
 and a hatch leading SOUTH. The corridor ends in an open doorway leading NORTH.
-Would you like to take the FIRST or SECOND door to the east, or head NORTH or
+Would you like to take the FIRST or SECOND door on the near wall, or head NORTH or
 SOUTH\n"""
 ,[0,0,13,11,9,10,0],"")
 r11=room(11,"""You find yourself in a room containing rows of shelves packed with crates, barrels, boxes and
@@ -112,17 +115,17 @@ darkness.The two doors are identical. Each is made of a solid block of metal,
 about three feet thick. The stone is carved with a strange language that you
 cannot read. One door to the NORTH has an iron ring set into its surface, while
 the other EAST door appears to be hollow.\n"""
-,[1,5,8,0,0,0,0],"pickup")
+,[1,5,8,0,0,0,0],"")
 r2 =room(2,"""It's too dark to see anything clearly, so you activate your flashlight. The
 room seems mostly empty until you notice something moving in the shadows.
 Something is crouched on one of the shelves lining the back wall; it looks like
 a huge spider made of metal. It scuttles forward suddenly and lunges at you!
 You fire your lazer wildly, missing the creature completely and blasting a
-chunk out of the wall before you.The spider scurries off to the EAST, with a
+chunk out of the wall before you. The spider scurries off to the EAST, with a
 noise that leaves your heart pounding. There are exits to the WEST and EAST and
 a door to the SOUTH which looks like it returns you to the landing bay. Which
 way would you like to go?\n"""
-,[8,6,0,1,0,0,0],"pickup")
+,[8,6,0,1,0,0,0],"")
 r1 =room(1,"""The Crystal Palace looms high above you as you step out onto its vast
 landing bay. The lights glow softly inside the enormous structure, casting long
 shadows across the crystalline walls. You can see a small flashing object on
@@ -140,10 +143,14 @@ If you would like to leave the ship and investigate the
 outpost press 1, if you would like to search the ship for any valuable supplies
 press 2. If you would like to speak to the AI press 3\n """
 , [0,0,0,0,1,1,1],"")
+
+#array of rooms
 rooms =[r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13,r14]
 
+#current room location
 location = 0
 
+#deals with input,room choices,extra options and pickups
 def logic():
             
             global location 
@@ -282,13 +289,13 @@ consciousness.GAME OVER"""
             else:
                 dprint("please choose a valid option\n ")
                 logic() 
+#main game loop, printing rooms description and options                
 def loop():
         dprint(rooms[location].desc)
         logic()
         loop()
-        
-     
-    
+
+#initial welcome and beginning
 dprint("Welcome\n")
 dprint("What is your name:  ")
 name = input().strip()
