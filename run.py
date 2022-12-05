@@ -1,10 +1,10 @@
 import sys
 import time
 import random
-import os
+
 
 delay = .02
-tdelay = .08
+tdelay = 1
 
 #delay print time
 def dprint(s):
@@ -130,8 +130,8 @@ way would you like to go?\n"""
 r1 =room(1,"""The Crystal Palace looms high above you as you step out onto its vast
 landing bay. The lights glow softly inside the enormous structure, casting long
 shadows across the crystalline walls. You can see a small flashing object on
-the ground in front of you.This place has a cold ominous prescence and you fear if 
-you do not find a way out soon, you will be stuck here forever. 
+the ground in front of you.This place has a cold ominous prescence and you fear 
+if you do not find a way out soon, you will be stuck here forever. 
 There are three doors here, each marked with some alien hieroglyphics you 
 have never seen before.
 You may return to the SHIP or would you like to choose 1, 2 or 3?\n """,[0,0,0,0,4,2,3] ,"""you take the object
@@ -292,7 +292,6 @@ consciousness.GAME OVER"""
                 logic() 
 #main game loop, printing rooms description and options                
 def loop():
-        os.system('cls' if os.name == 'nt' else 'clear')
         dprint(rooms[location].desc)
         logic()
         loop()
@@ -326,7 +325,12 @@ have some troubling news, we have docked with an unknown outpost, it seems the
 outpost had a tractor beam which overpowered my engines. I am currently
 helpless to move the ship, and the outpost is not responding to our
 communications."\n""")
-  
+    dprint('.')
+    time.sleep(tdelay)
+    dprint('.')
+    time.sleep(tdelay)
+    dprint('.\n')
+    time.sleep(tdelay)
 else:
     dprint('Well I guess you better get on with your incredible existence then, Human..')
     quit()
