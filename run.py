@@ -6,9 +6,15 @@ import os
 delay = 0.02
 tdelay = 1
 
+
+# main game loop,  printing rooms description and options
+def loop():
+    dprint(rooms[location].desc)
+    logic()
+    loop()
+
+
 # delay print time
-
-
 def dprint(s):
     for c in s:
         sys.stdout.write(c)
@@ -211,8 +217,10 @@ press 2. If you would like to speak to the AI press 3\n """,
 # array of rooms
 rooms = [r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14]
 
-# current room location
+# current room location and checker to clear screen
 location = 0
+check = 0
+
 
 # deals with input, room choices, extra options and pickups
 def logic():
@@ -221,20 +229,30 @@ def logic():
     global rooms
     global r1
     global clear
+    global check
     goal = input().strip().lower()
     global key, lazer
+    
     if clear is not False:
         os.system("cls" if os.name == "nt" else "clear")
         clear = False
+
+    if check is not location:
+        clear = True
+        check = location
+    
     if " " in goal:
         dprint("please only use 1 word commands with no spaces\n")
         logic()
+
     if goal in go:
         dprint("please don't use that word,  just pick an option OK\n")
         logic()
+
     if goal in left and rooms[location].options[0] != 0:
         location = rooms[location].options[0]
         loop()
+
     elif goal in right and rooms[location].options[1] != 0:
         if location == 5:
             location = 10
@@ -243,13 +261,16 @@ def logic():
 with many doors"""
             )
             logic()
+
         else:
             location = rooms[location].options[1]
             loop()
+
     elif goal in straight and rooms[location].options[2] != 0:
         if location == 12 and inv[0] is not True:
             dprint("the door is locked,  there must be another way around")
             loop()
+
         elif location == 12 and inv[0] is True:
             dprint(
                 """as you approach the door the object in your pocket begins to pulse and
@@ -258,12 +279,15 @@ revealing a huge central control station. You enter cautiously..."""
             )
             location = rooms[location].options[2]
             loop()
+
         else:
             location = rooms[location].options[2]
             loop()
+
     elif goal in back and rooms[location].options[3] != 0:
         location = rooms[location].options[3]
         loop()
+
     elif goal in one and rooms[location].options[4] != 0:
 
         location = rooms[location].options[4]
@@ -279,6 +303,7 @@ cautiously"""
             )
             location = 14
             loop()
+
         elif location == 13 and lazer is not True:
             dprint(
                 """As you approach the door you hear a sharp metalic sound and what looks like
@@ -289,6 +314,7 @@ and you run for the nearest exit,  barely escaping being vaporised\n"""
         elif location != 0:
             location = rooms[location].options[5]
             loop()
+
         else:
             dprint(
                 """after much searching you find a small lazer device with enough charge for a few uses,  it may prove to be useful.\n"""
@@ -301,10 +327,12 @@ like to speak to the AI press 3\n """,
             )
             rooms[0].options = [0, 0, 0, 0, 1, 0, 1]
             loop()
+
     elif goal in three and rooms[location].options[6] != 0:
         if location != 0:
             location = rooms[location].options[6]
             loop()
+
         else:
             dprint(
                 """'captain I believe I have been infected with a complex virus,  I only have
@@ -325,20 +353,24 @@ There are three doors here,  each marked with some alien hieroglyphics you have
 never seen before.
 You may return to the SHIP or would you like to choose 1,  2 or 3?\n """
             logic()
+
         elif location == 1 and inv[0] is True:
             dprint("you already took the object\n")
-
             logic()
+
         elif location == 10:
             dprint(rooms[location].extra)
             location = random.choice(rooms).number
             loop()
+
         else:
             dprint(rooms[location].extra)
+
     elif goal in ship and location == 1:
         location = 0
         dprint(rooms[0].desc)
         logic()
+
     elif location == 14 and goal == "nothing":
         dprint(
             """'That is the correct answer,  I wish you luck on your journey captain' You
@@ -363,8 +395,8 @@ stasis gases. ' We shall find home soon captain,  sleep well"""
         dprint(
             """congratulations on completing the outpost,  many adventurers have fallen
 here,  and we commend you for your wit, skill and expertise,  see you in the next
-adventure."""
-        )
+adventure.""")
+
     elif location == 14 and goal != "nothing":
         dprint(
             """'that is incorrect,  I am sorry captain you have not worthy.'The room starts
@@ -372,17 +404,11 @@ to fill with a noxious gas,  you try to find some way out but you soon lose
 consciousness.GAME OVER"""
         )
         quit()
+
     else:
         dprint("please choose a valid option\n ")
         clear = True
         loop()
-
-
-# main game loop,  printing rooms description and options
-def loop():
-    dprint(rooms[location].desc)
-    logic()
-    loop()
 
 
 # initial welcome and beginning
