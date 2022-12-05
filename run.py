@@ -137,8 +137,7 @@ You may return to the SHIP or would you like to choose 1, 2 or 3?\n """,[0,0,0,0
 which looks much like a key of some sort.You may return to the SHIP or would
 you like to choose 1, 2 or 3?\n"""
 )
-r0 =room(0,"""You exit your stasis pod and see a huge crystalline palace out the window.
-There is no sign of any movement, and the place seems eerily quiet.
+r0 =room(0,"""There is no sign of any movement, and the place seems eerily quiet.
 If you would like to leave the ship and investigate the
 outpost press 1, if you would like to search the ship for any valuable supplies
 press 2. If you would like to speak to the AI press 3\n """
@@ -254,7 +253,6 @@ You may return to the SHIP or would you like to choose 1, 2 or 3?\n """
             elif goal in ship and location == 1:
                  
                  location = 0
-                 dprint(rooms[0].desc.strip("""You exit your stasis pod and see a huge crystalline palace out the window."""))
                  logic()
                  
             elif location ==14 and goal == "nothing" :
@@ -331,6 +329,7 @@ communications."\n""")
     time.sleep(tdelay)
     dprint('.\n')
     time.sleep(tdelay)
+    dprint("""You exit your stasis pod and see a huge crystalline palace out the window.""")
 else:
     dprint('Well I guess you better get on with your incredible existence then, Human..')
     quit()
