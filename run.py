@@ -1,6 +1,7 @@
 import sys
 import time
 import random
+import os
 
 delay = .02
 tdelay = .08
@@ -214,7 +215,7 @@ and you run for the nearest exit, barely escaping being vaporised\n""")
                     location = rooms[location].options[5]
                     loop()
                 else:                     
-                     dprint("""after much searching you find a small lazer device with enough charge for 1 use, it may prove to be useful.\n""")
+                     dprint("""after much searching you find a small lazer device with enough charge for a few uses, it may prove to be useful.\n""")
                      lazer=True
                      rooms[0].desc="""  There is no sign of any movement, and the place seems eerily quiet.If you
 would like to leave the ship and investigate the outpost press 1, if you would
@@ -291,6 +292,7 @@ consciousness.GAME OVER"""
                 logic() 
 #main game loop, printing rooms description and options                
 def loop():
+        os.system('cls' if os.name == 'nt' else 'clear')
         dprint(rooms[location].desc)
         logic()
         loop()
