@@ -1,6 +1,9 @@
 # Site Overview
 The outpost is a simple text adventure game made in python. The player must navigate their way around and abandoned outpost and find a way to escape. There are many rooms to explore, and if the player is diligent and clever, the game should take no more than 10 minutes to complete.
 
+## How to play
+The Outpost is a simple to navigate. Optional routes will be highlighted in the text, giving the player a north, south, east or west direction to follow, or 1,2 and 3 for doors and other optional pickups. The player can usually typ an abbreviation of the word ; for example 'p' for pickup or n for north, and with these commands the user can navigate intuitively around the outpost.
+
 ## Goal
 I was fascinated by the "choose your own adventure" books as a child, and wished to create a science fiction themed version. I had been thinking of this theme for a long time and this project seemed like the ideal place to bring this story to life.
 
