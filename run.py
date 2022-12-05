@@ -220,6 +220,7 @@ def logic():
     global location
     global rooms
     global r1
+    global clear
     goal = input().strip().lower()
     global key, lazer
     if clear is not False:
