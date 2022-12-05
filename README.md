@@ -26,11 +26,17 @@ This made it easy to organise and iterate through each rooms dialogue and  optio
 # Implementation
 - I opted for a game loop which would print each scenario, the rooms being organised into a collection of arrays, containing the room number, room text, optional text for keys etc. and an array of exits. This array would contain a zero if that direction was unavailable, or if this exit was available, it would contain the connecting rooms number. This allowed me to orgainize and edit the rooms and connections in an intuitive way. I also gave the rooms an 'extra' variable, which if populated would allow the user to interact with something or change the initial description based on which direction they might come from. This was implemented sparsley but does work as a good option should I want to add objects in the future. 
 
-# Bugs
+# Testing
+
+## Bugs
+- There was a bug where the screen would run out of room on the page, I then created a bool
+to clear the screen at appropiate times and this fixed the issue.
 - There was a bug with the initial room, stripping the text could lead to a crash if the player entered an area twice. This was fixed by moving the text to the initial dialogue.
 - There was a bug found with the lock on level 12, it seemed I had confused some of the logic with room 5, so it was a simple fix to rearrange the logic to fix the error.
 - There were other small bugs, such as text not updating after a pickup , or room sequences not ordered correctly. After much testing these were wasy to fix.
 
+# Code evaluation
+- Having tested the code on the Code Institutes Python Linter, I cleaned all the errors not related to text. Seeing as there are large portions of text to print it was flagging some of these with either e501 line too long or  W291 trailing whitespaces. In future I should opt to use a text file for large portions of text to avoid this from happening
 # Deployment 
 
 ## Deployment to Heroku

@@ -53,18 +53,17 @@ ship = ["return", "ship", "enter"]
 go = ["go", "walk", "run"]
 
 # room number, description, connections array and extra options
-r14 = room(14, """You enter the room and the door shuts tight behind you
+r14 = room(14, """ You enter the room and the door shuts tight behind you
 'Hello captain, I have been watching you for quite some time. If you can answer
-this riddle I will allow you to leave 'What is greater than God,\n  More evil
-than the devil,\n The poor have it,\n  The rich don't need it,\n
+this riddle I will allow you to leave 'What is greater than God,\n 
+More evil than the devil,\n The poor have it,\n  The rich don't need it,\n
 And if you eat it, you'll die?'\n""", [0, 0, 0, 0, 0, 0, 0], "",)
 r13 = room(
     13,
     """This room seems to be the central control room of this facility. In the
 middle of the room is a large console, surrounded by switches, dials and knobs.
 There is a door to the EAST and another to the WEST.you can see two doors on a
-lower platform ,  you may enter door 1 or door 2 """,
-    [7, 12, 0, 0, 6, 14, 0],
+lower platform ,  you may enter door 1 or door 2. """, [7, 12, 0, 0, 6, 14, 0],
     "",
 )
 r12 = room(
@@ -233,12 +232,12 @@ def logic():
     goal = input().strip().lower()
     global key, lazer
     
-    if clear is not False:
+    if clear is not True:
         os.system("cls" if os.name == "nt" else "clear")
-        clear = False
+        clear = True
 
     if check is not location:
-        clear = True
+        clear = False
         check = location
     
     if " " in goal:
@@ -395,7 +394,7 @@ stasis gases. ' We shall find home soon captain,  sleep well"""
         dprint(
             """congratulations on completing the outpost,  many adventurers have fallen
 here,  and we commend you for your wit, skill and expertise,  see you in the next
-adventure.""")
+adventure.""")quit()
 
     elif location == 14 and goal != "nothing":
         dprint(
@@ -407,8 +406,8 @@ consciousness.GAME OVER"""
 
     else:
         dprint("please choose a valid option\n ")
-        clear = True
-        loop()
+        clear = False
+        logic()
 
 
 # initial welcome and beginning
@@ -437,7 +436,7 @@ if start in begin:
     dprint(
         """You awake from stasis, a flash of blinding light,  your memory is fogged and
 cloudy. "Welcome back Captain" the familiar voice of the ships AI echoes " I
-have some troubling news,  we have docked with an unknown outpost,  it seems the
+have some troubling news,  we have docked with an unknown outpost, it seems the
 outpost had a tractor beam which overpowered my engines. I am currently
 helpless to move the ship,  and the outpost is not responding to our
 communications."\n"""
@@ -453,7 +452,7 @@ communications."\n"""
     )
 else:
     dprint(
-        "Well I guess you better get on with your incredible existence then,  Human.."
+        "Well I guess you better get on with your incredible existence then, Human.."
     )
     quit()
 loop()
