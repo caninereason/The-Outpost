@@ -62,4 +62,5 @@ to clear the screen at appropiate times and this fixed the issue.
 ### Version Control
 - I used git as the version control software. With the use of the commands git add . , git commit -m "", and git push , I was able to add, save and push code to the github repository.
 
-
+## References
+I got the sleep text function from MattH's answer here [Stackoverflow](https://stackoverflow.com/questions/4627033/how-to-print-a-string-with-a-little-delay-between-the-chars)
