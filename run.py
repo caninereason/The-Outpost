@@ -135,7 +135,7 @@ There are three doors here, each marked with some alien hieroglyphics you
 have never seen before.
 You may return to the SHIP or would you like to choose 1, 2 or 3?\n """,[0,0,0,0,4,2,3] ,"""you take the object
 which looks much like a key of some sort.You may return to the SHIP or would
-you like to choose 1, 2 or 3?\n"""
+you like to choose door 1, 2 or 3?\n"""
 )
 r0 =room(0,"""There is no sign of any movement, and the place seems eerily quiet.
 If you would like to leave the ship and investigate the
@@ -251,10 +251,9 @@ You may return to the SHIP or would you like to choose 1, 2 or 3?\n """
                  else:
                     dprint(rooms[location].extra)
             elif goal in ship and location == 1:
-                 
                  location = 0
+                 dprint(rooms[0].desc)
                  logic()
-                 
             elif location ==14 and goal == "nothing" :
                  dprint("""'That is the correct answer, I wish you luck on your journey captain' You
 suddenly find yourself transported back to your ship, with all systems
