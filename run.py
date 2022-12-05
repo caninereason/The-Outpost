@@ -1,7 +1,7 @@
 import sys
 import time
 import random
-
+import os
 delay = .02
 tdelay = 1
 
@@ -156,7 +156,8 @@ def logic():
             global rooms
             global r1
             goal = input().strip().lower()
-            global key,lazer,book
+            global key,lazer
+            os.system('cls' if os.name == 'nt' else 'clear')
             if " " in goal:
                  dprint("please only use 1 word commands with no spaces\n")
                  logic()
@@ -288,7 +289,6 @@ consciousness.GAME OVER"""
                 logic() 
 #main game loop, printing rooms description and options                
 def loop():
-        
         dprint(rooms[location].desc)
         logic()
         loop()
