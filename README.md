@@ -1,3 +1,5 @@
+[Deployed Site](https://outpost.herokuapp.com/)
+
 # Site Overview
 The outpost is a simple text adventure game made in python. The player must navigate their way around and abandoned outpost and find a way to escape. There are many rooms to explore, and if the player is diligent and clever, the game should take no more than 10 minutes to complete.
 
