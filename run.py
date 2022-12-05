@@ -55,8 +55,11 @@ go = ["go", "walk", "run"]
 # room number, description, connections array and extra options
 r14 = room(14, """ You enter the room and the door shuts tight behind you
 'Hello captain, I have been watching you for quite some time. If you can answer
-this riddle I will allow you to leave 'What is greater than God,\n 
-More evil than the devil,\n The poor have it,\n  The rich don't need it,\n
+this riddle I will allow you to leave 
+'What is greater than God,
+More evil than the devil,
+The poor have it,
+The rich don't need it,
 And if you eat it, you'll die?'\n""", [0, 0, 0, 0, 0, 0, 0], "",)
 r13 = room(
     13,
@@ -218,7 +221,7 @@ rooms = [r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14]
 
 # current room location and checker to clear screen
 location = 0
-check = 0
+check = 1
 
 
 # deals with input, room choices, extra options and pickups
@@ -380,11 +383,11 @@ and am initiating the undocking sequence,  we must escape quickly' The ship
 rattles wildly as the main engines power up. You see the outpost move away from
 you rapidly,  and in a matter of seconds there is a blinding light as the
 outpost explodes with a huge shockwave jolting the ship. 'I am glad for your
-safe return captain,  I feared our journey might have ended there,  please resume
-your position in your statis pod and I will continue our course home' You cimb
+safe return captain,  I feared our journey might have ended there, please resume
+your position in your statis pod and I will continue our course home' You climb
 into your statis pod and think of what may have become of you had you not kept
 your wits about you. The stasis pod closes and you smell the familiar odor of
-stasis gases. ' We shall find home soon captain,  sleep well"""
+stasis gases. ' We shall find home soon captain, sleep well"""
         )
         time.sleep(tdelay)
         dprint(".")
@@ -392,8 +395,13 @@ stasis gases. ' We shall find home soon captain,  sleep well"""
         dprint(".")
         time.sleep(tdelay)
         dprint("""congratulations on completing the outpost, many adventurers 
-have fallen here,  and we commend you for your wit, skill and expertise,
-see you in the next adventure.""")
+have fallen here.We commend you for your wit, skill and expertise..
+See you in the next adventure.""")
+        time.sleep(tdelay)
+        dprint(".")
+        time.sleep(tdelay)
+        dprint(".")
+        time.sleep(tdelay)
         quit()
 
     elif location == 14 and goal != "nothing":
@@ -436,9 +444,9 @@ if start in begin:
     dprint(
         """You awake from stasis, a flash of blinding light,  your memory is fogged and
 cloudy. "Welcome back Captain" the familiar voice of the ships AI echoes " I
-have some troubling news,  we have docked with an unknown outpost, it seems the
+have some troubling news, we have docked with an unknown outpost, it seems the
 outpost had a tractor beam which overpowered my engines. I am currently
-helpless to move the ship,  and the outpost is not responding to our
+helpless to move the ship, and the outpost is not responding to our
 communications."\n"""
     )
     dprint(".")
