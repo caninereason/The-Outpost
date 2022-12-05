@@ -125,7 +125,7 @@ chunk out of the wall before you. The spider scurries off to the EAST, with a
 noise that leaves your heart pounding. There are exits to the WEST and EAST and
 a door to the SOUTH which looks like it returns you to the landing bay. Which
 way would you like to go?\n"""
-,[8,6,0,1,0,0,0],"")
+,[6,8,0,1,0,0,0],"")
 r1 =room(1,"""The Crystal Palace looms high above you as you step out onto its vast
 landing bay. The lights glow softly inside the enormous structure, casting long
 shadows across the crystalline walls. You can see a small flashing object on
