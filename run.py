@@ -414,7 +414,7 @@ consciousness.GAME OVER"""
 
     else:
         dprint("please choose a valid option\n ")
-        clear = False
+        clear = True
         logic()
 
 
