@@ -2,7 +2,7 @@
 The outpost is a simple text adventure game made in python. The player must navigate their way around and abandoned outpost and find a way to escape. There are many rooms to explore, and if the player is diligent and clever, the game should take no more than 10 minutes to complete.
 
 ## How to play
-The Outpost is a simple to navigate. Optional routes will be highlighted in the text, giving the player a north, south, east or west direction to follow, or 1,2 and 3 for doors and other optional pickups. The player can usually typ an abbreviation of the word ; for example 'p' for pickup or n for north, and with these commands the user can navigate intuitively around the outpost.
+The Outpost is a simple game to navigate. Optional routes will be highlighted in the text, giving the player a north, south, east or west direction to follow, or 1,2 and 3 for doors and other optional pickups. The player can usually type an abbreviation of the word ; for example 'p' for pickup or n for north, and with these commands the user can navigate intuitively around the outpost.
 
 ## Goal
 I was fascinated by the "choose your own adventure" books as a child, and wished to create a science fiction themed version. I had been thinking of this theme for a long time and this project seemed like the ideal place to bring this story to life.
@@ -19,24 +19,24 @@ I was fascinated by the "choose your own adventure" books as a child, and wished
 - Those who enjoy a challenging adventure game
 
 ## Future Features
-- I have had the idea for this project for a long time and feel it could make a compelling narative. The arrangement of each rooms array is organised so future additions and editing rooms would be quite simple.In the future I would like to further develop the storyline, adding more rooms, pickups, graphics and scenarios. However the text adventure game style is not to everyone's liking and I may change this to incorporate better graphics, UI and playability. 
+- I have had the idea for this project for a long time and felt it could make a compelling narrative. The arrangement of each room's array is organized so future additions and editing rooms would be quite simple. In the future I would like to further develop the storyline, adding more rooms, pickups, graphics and scenarios. However the text adventure game style is not to everyone's liking and I may change this to incorporate better graphics, UI and playability. 
 
 # Design
-- I began by drawing a map of all the rooms, and using this map I proceeded to populate each room with it's appropiate number, description, exits and pickups.
-This made it easy to organise and iterate through each rooms dialogue and  options. I then added a few interactive elements such as a lazer, a key to pickup and a book the player could examine which would teleport them to a random room. Given the scope of this project I found these to be a sufficient number of interactable objects.
+- I began by drawing a map of all the rooms, and using this map I proceeded to populate each room with it's appropriate number, description, exits and pickups.
+This made it easy to organize and iterate through each rooms dialogue and  options. I then added a few interactive elements such as a laser, a key to pickup and a book the player could examine which would teleport them to a random room. Given the scope of this project I found these to be a sufficient number of interactable objects.
 
 ![alt text](readme_docs/map.png)
 # Implementation
-- I opted for a game loop which would print each scenario, the rooms being organised into a collection of arrays, containing the room number, room text, optional text for keys etc. and an array of exits. This array would contain a zero if that direction was unavailable, or if this exit was available, it would contain the connecting rooms number. This allowed me to orgainize and edit the rooms and connections in an intuitive way. I also gave the rooms an 'extra' variable, which if populated would allow the user to interact with something or change the initial description based on which direction they might come from. This was implemented sparsley but does work as a good option should I want to add objects in the future. 
+- I opted for a game loop which would print each scenario, the rooms being organized into a collection of arrays, containing the room number, room text, optional text for keys etc. and an array of exits. This array would contain a zero if that direction was unavailable, or if this exit was available, it would contain the connecting rooms number. This allowed me to organize and edit the rooms and connections in an intuitive way. I also gave the rooms an 'extra' variable, which if populated would allow the user to interact with something or change the initial description based on which direction they might come from. This was implemented sparsely but does work as a good option should I want to add objects in the future. 
 
 # Testing
 
 ## Bugs
 - There was a bug where the screen would run out of room on the page, I then created a bool
-to clear the screen at appropiate times and this fixed the issue.
+to clear the screen at appropriate times and this fixed the issue.
 - There was a bug with the initial room, stripping the text could lead to a crash if the player entered an area twice. This was fixed by moving the text to the initial dialogue.
 - There was a bug found with the lock on level 12, it seemed I had confused some of the logic with room 5, so it was a simple fix to rearrange the logic to fix the error.
-- There were other small bugs, such as text not updating after a pickup , or room sequences not ordered correctly. After much testing these were wasy to fix.
+- There were other small bugs, such as text not updating after a pickup , or room sequences not ordered correctly. After much testing these were easy to fix.
 
 # Code evaluation
 - Having tested the code on the Code Institutes Python Linter, I cleaned all the errors not related to text. Seeing as there are large portions of text to print it was flagging some of these with either e501 line too long or  W291 trailing whitespaces. In future I should opt to use a text file for large portions of text to avoid this from happening
